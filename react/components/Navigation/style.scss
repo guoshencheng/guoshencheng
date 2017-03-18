@@ -1,0 +1,22 @@
+#navigation {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  #navigation_title {
+    position: absolute;
+    left: 5%;
+  }
+  #navigation_items {
+    position: absolute;
+    right: 5%;
+  }
+  .navigation_item {
+    margin-right: 10px;
+    color: #b3b3b3;
+  }
+  .selected {
+    color: #333333;
+  }
+}

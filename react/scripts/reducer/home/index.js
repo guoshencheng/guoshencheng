@@ -1,3 +1,4 @@
-module.exports = (state, action) => {
-  return state;
+import user from './user';
+module.exports = {
+  user
 }
