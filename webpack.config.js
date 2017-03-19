@@ -1,19 +1,11 @@
 var webpack = require('webpack')
 var path = require('path')
 var fs = require('fs')
-var entry = {}
-var appDir = path.resolve(__dirname, './react/views')
-fs.readdirSync(appDir).filter(function(child) {
-  return fs.lstatSync(appDir + '/' + child).isDirectory()
-}).forEach(function(child) {
-  entry[child] = [
-    'webpack-hot-middleware/client',
-    path.resolve(__dirname, './react/views/' + child + '/index.jsx'),
-  ]
-})
 
 module.exports = {
-  entry: entry,
+  entry: {
+    main: ["webpack-hot-middleware/client", path.resolve(__dirname, './react/index.jsx')]
+  },
   output: {
       path: path.resolve(__dirname, './public/dist'),
       filename: "[name].js",

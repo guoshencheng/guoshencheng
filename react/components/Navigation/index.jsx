@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 require('./style.scss');
 
@@ -11,10 +12,10 @@ class Navigation extends Component {
   render() {
     return (
       <div id="navigation" >
-      <a href="/" id="navigation_title">Century Guo</a>
+      <Link to="/" id="navigation_title">Century Guo</Link>
       <span id="navigation_items">
-        <span className="navigation_item selected">Home</span>
-        <span className="navigation_item">Blog</span>
+        <Link to="/" className="navigation_item selected">Home</Link>
+        <Link to="/blog" className="navigation_item">Blog</Link>
       </span>
       </div>
     )
