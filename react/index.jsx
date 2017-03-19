@@ -6,17 +6,17 @@ import createHistory from 'history/createHashHistory';
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import CustomRouter from './router';
 
-let hasHistory = createHistory();
-const reactRouterMiddleware = routerMiddleware(hasHistory)
+let hashHistory = createHistory();
+const reactRouterMiddleware = routerMiddleware(hashHistory)
 let createStoreWithMiddleware = applyMiddleware(thunk, reactRouterMiddleware)(createStore);
 let store = createStoreWithMiddleware(combineReducers({
   routing: routerReducer
 }));
-let customRouter = CustomRouter(store, hasHistory);
+let RouterComponent = CustomRouter(hashHistory);
 
 render(
   <Provider store={store}>
-    { customRouter }
+    { RouterComponent }
   </Provider>,
   document.querySelector('#topContainer')
 )

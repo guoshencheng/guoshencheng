@@ -1,16 +1,25 @@
 /**
  * Created by guoshencheng on 19/03/2017.
  */
-import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, Route } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import Home from './views/home/index.jsx';
+import Blog from './views/blog/index.jsx';
+import Navigation from './components/Navigation/index.jsx';
+import { ConnectedRouter } from 'react-router-redux'
 
-var CustomRouter = (store, history) => {
-  history = syncHistoryWithStore(history, store)
-  return (
-    <Router history={history} >
-        <Route path="/" component={Home} />
-    </Router>
+var CustomRouter = (history) => {
+  return  (
+    <ConnectedRouter history={history}>
+      <div>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/blog" component={Blog}/>
+          <Route path="/blog/:id" component={Home}/>
+          <Route component={Home}/>
+        </Switch>
+      </div>
+    </ConnectedRouter>
   )
 };
 

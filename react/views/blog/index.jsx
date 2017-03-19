@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation/index.jsx';
 
 require('./style.scss');
 
-class HomePage extends React.Component {
+class BlogPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,10 +12,10 @@ class HomePage extends React.Component {
   render() {
     return (
       <div id="home_page_container">
-        <h1> Home </h1>
+        <h1> Blog </h1>
       </div>
     )
   }
 }
 
-export default connect()(HomePage);
+export default connect()(BlogPage);

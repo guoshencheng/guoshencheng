@@ -12,10 +12,10 @@ class Navigation extends Component {
   render() {
     return (
       <div id="navigation" >
-      <Link to="/" id="navigation_title">Century Guo</Link>
+      <Link replace to="/" id="navigation_title">Century Guo</Link>
       <span id="navigation_items">
-        <Link to="/" className="navigation_item selected">Home</Link>
-        <Link to="/blog" className="navigation_item">Blog</Link>
+        <Link replace to="/" className="navigation_item selected">Home</Link>
+        <Link replace to="/blog" className="navigation_item">Blog</Link>
       </span>
       </div>
     )
@@ -23,7 +23,6 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
   }
 };
