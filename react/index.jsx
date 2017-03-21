@@ -5,13 +5,13 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import createHistory from 'history/createHashHistory';
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import CustomRouter from './router';
+import reducers from './scripts/reducer';
 
+require('./style.scss');
 let hashHistory = createHistory();
 const reactRouterMiddleware = routerMiddleware(hashHistory)
 let createStoreWithMiddleware = applyMiddleware(thunk, reactRouterMiddleware)(createStore);
-let store = createStoreWithMiddleware(combineReducers({
-  routing: routerReducer
-}));
+let store = createStoreWithMiddleware(reducers);
 let RouterComponent = CustomRouter(hashHistory);
 
 render(

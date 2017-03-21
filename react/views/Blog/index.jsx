@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class blogs extends React.Component {
+class Blog extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div id="blogs">
+      <div id="blog">
       </div>
     )
   }
@@ -26,4 +26,4 @@ const mapActionToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapActionToProps)(blogs);
+export default connect(mapStateToProps, mapActionToProps)(Blog);
