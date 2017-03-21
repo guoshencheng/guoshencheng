@@ -19,15 +19,13 @@ var FileGenerator = function(templateDir, out) {
     process.exit();
   }
   return function(data) {
-    console.log("templateDir: " + templateDir);
     var template = ejs.compile(fs.readFileSync(templateDir, 'utf-8'));
-    console.log(template, data);
     var fileString = template(data);
     fs.readFile(`${pwd}/reactp.config.json`, 'utf8', function (err, data) {
       var outPath
       if (err) {
         outPath = defaultConfig[out]
-        console.log(`can not find file at directory ${pwd}; use default config`);
+        console.warn(`can not find file at directory ${pwd}; use default config`);
       } else {
         var config = JSON.parse(data);
         if (config[out]) {
@@ -35,12 +33,14 @@ var FileGenerator = function(templateDir, out) {
           console.log(`use file ${pwd}/reactp.config.json`);
         } else {
           outPath = defaultConfig[out]
-          console.log(`missing key ${out} at directory ${pwd}; use default config`);
+          console.warn(`missing key ${out} at directory ${pwd}; use default config`);
         }
       }
       var componentFilePath = `${outPath}${name}/index.jsx`;
       writeFile(componentFilePath, fileString, function(err, result) {
-        console.log(err, result)
+        if (err) {
+          console.error(err);
+        }
       });
     });
   }
