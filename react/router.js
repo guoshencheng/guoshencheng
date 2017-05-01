@@ -6,6 +6,7 @@ import Home from './views/Home/index.jsx';
 import Blog from './views/Blog/index.jsx';
 import Blogs from './views/Blogs/index.jsx';
 import Navigation from './components/Navigation/index.jsx';
+import Create from './views/Create/index.jsx';
 import { ConnectedRouter } from 'react-router-redux'
 
 var CustomRouter = (history) => {
@@ -14,9 +15,10 @@ var CustomRouter = (history) => {
       <div>
         <Navigation />
         <Switch>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={Home} />
           <Route exact path="/blog" component={Blogs}/>
           <Route path="/blog/:id" component={Blog}/>
+          <Route path="/create" component={Create} />
           <Route component={Home}/>
         </Switch>
       </div>
