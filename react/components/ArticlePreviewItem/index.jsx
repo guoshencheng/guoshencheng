@@ -14,7 +14,11 @@ class ArticlePreviewItem extends Component {
     return (
       <div className="article_preview_item" >
         <Link to={path} className="article_item_title">{ article.title }</Link>
-        <p className="article_item_preview">{ article.preview }</p>
+        <p className="article_item_preview">{ article.desc }</p>
+        <div className="article_item_info">
+          <span className="article_item_time">发表于：很久以前</span>
+          <span className="article_item_tag"> - 老文章</span>
+        </div>
       </div>
     )
   }

@@ -13,7 +13,7 @@ class Blogs extends React.Component {
 
   componentDidMount() {
     let { actions } = this.props;
-    actions.getAllArticles();
+    actions.getAllBlogs();
   }
 
   render() {

@@ -1,3 +1,20 @@
 .article_preview_item {
-  margin-top: 50px;
+  border-bottom: solid 1px #dedede;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  .article_item_title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #424242;
+  }
+  .article_item_preview {
+    font-size: 17px;
+    font-weight: lighter;
+    color: #616161;
+  }
+  .article_item_info {
+      font-size:13px;
+      font-weight: lighter;
+      color: #b3b3b3;
+  }
 }
