@@ -1,4 +1,3 @@
-#####PaperLike
 上周有翻译到一篇关于使用Layout实现可拖拽的CollectionView的英文[博客](http://www.jianshu.com/p/8d1bf1838882)，之后就去大概实现了一下[Facebook  Paper](https://www.facebook.com/paper)的Paper选择页，大概界面是这样的
 
 ![](http://img-storage.qiniudn.com/15-10-28/27520472.jpg)
@@ -9,7 +8,7 @@
 
 我在[Github](https://github.com/guoshencheng/PaperLike)上已经粗糙的实现了一下，当然这个上面还包含了Paper的其他页面，但是我们这次只介绍关于如何实现在两个CollectionView中拖拽一个Cell的部分。
 
-######先实现上周的效果
+###### 先实现上周的效果
 我们首先先实现上周介绍的，在单一的CollectionView中的拖拽，这次我们使用Objective-C来实现。</br>
 首先我们要有一个Bundle来记录和被拖拽的Cell相关的属性。
 
@@ -40,7 +39,7 @@ typedef void (^MoveItemData)(NSIndexPath *fromIndexPath, NSIndexPath *toIndexPat
 ```
 在Cell交换位置的时候进行数据的对换。
 
-######实现文件
+###### 实现文件
 实现文件中，比那篇英文翻译中多了一个`hasAddLongPressGesture`变量，这个变量初始化为`NO`，当加上了手势之后变为`YES`。防止多次加手势导致内存的滥用。</br>
 
 在`- (void)setup`中加入手势，初始化傀儡拖拽Cell的父View(`canvas`)。</br>
@@ -52,7 +51,7 @@ typedef void (^MoveItemData)(NSIndexPath *fromIndexPath, NSIndexPath *toIndexPat
 
 那么这样我们将这个Layout赋值个某个CollectionView的Layout的时候，这个CollectionView就能够实现长按移动Cell的功能了。
 
-######进一步实现
+###### 进一步实现
 
 解决完了上面的问题，那么问题接着来了，我们怎么能够实现两个CollectionView都因为一个Cell而动起来，并且这个Cell能够在两个CollectionView之间传递。
 
@@ -62,7 +61,7 @@ typedef void (^MoveItemData)(NSIndexPath *fromIndexPath, NSIndexPath *toIndexPat
 当然，传递的方式有三种，1、直接通过方法调用并传递参数，2、使用Block的方法传递参数，3、使用Delegate的方法传递参数。
 这里我们使用Block加方法调用的方式传递参数，当然delegate是完全可行的，这些只是脑子里灵光一现的事情~~爱用什么用什么。
 
-######Blocks
+###### Blocks
 
 我们要使用这些Block：
 
@@ -81,7 +80,7 @@ typedef void (^SendIfShouldFlyToOthers)();
 `FinishAnimationForCellMove`定义我们在最后动画结束之后应该移动Cell。
 `DeleteItemData`定义当我们删除Cell之后应该删除数据。`AddItemData`定义当我们加入Cell之后应该添加数据,`SendGestureBeganOut`定义当手势要开始的时候的该干什么，要将手势传递出去，同理`SendGestureEndedOut`, `SendGestureChangedOut`都是定义手势发生变化的时候外面该干什么，`SendIfShouldBeganGesture`在手势开始缠身Bundle的时候将Bundle传出去共享部分信息，`CheckIfBack`通过最后手指的位置返回是否需要返回或是飞到另一个CollectionView上去，`SendIfShouldFlyToOthers`通知Cell做动画飞到另一个CollectionView上去。
 
-######Public Function
+###### Public Function
 
 接下来就是一些对外的方法
 

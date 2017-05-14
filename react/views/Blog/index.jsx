@@ -3,6 +3,7 @@ import ReactMarkDown from 'react-markdown';
 import { connect } from 'react-redux';
 import pathToRegexp from 'path-to-regexp';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 import * as articleActions from '../../scripts/actions/article.js'
 var hljs = window.hljs;
 
@@ -25,17 +26,22 @@ class Blog extends React.Component {
   highlightCode() {
     const domNode = ReactDOM.findDOMNode(this);
     const nodes = domNode.querySelectorAll('pre code');
-
-    let i;
-    for (i = 0; i < nodes.length; i++) {
-        hljs.highlightBlock(nodes[i]);
-    }
+    nodes.forEach(node => {
+      hljs.highlightBlock(node);
+    })
   }
 
   render() {
     const { RM, article } = this.props;
+    const getTimeString = (data) => {
+      var date = new Date(parseInt(data));
+      return moment(date).format("YYYY-MM-DD")
+    }
+    const time = article && article.time ? (getTimeString(article.time)) : "很久很久以前";
     return (
       <div id="blog">
+        <div className="desc">{ time } </div>
+        <div className="title">{ article && article.title ? article.title : "" }</div>
         <div className="blog_container">
           <ReactMarkDown ref="blog" source={ RM }></ReactMarkDown>
         </div>

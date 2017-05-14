@@ -1,3 +1,19 @@
+#blog {
+ .title {
+  width: 80%; 
+  margin: 0px auto;
+  font-size: 40px;
+  word-wrap: break-word;
+ }
+
+ .desc {
+  font-size: 17px;
+  width: 80%; 
+  margin: 50px auto 10px;
+  padding-left: 10px;
+  color: #c7c7c7;
+ }
+ 
 .blog_container {
   width: 80%;
   margin: 50px auto;
@@ -8,8 +24,9 @@
     color: #F06050;
   }
   p {
-    color: #333333;
+    color: #666666;
     font-size: 15px;
+    line-height: 30px;
     code {
       font-size: 15px;
       color: #415C71;
@@ -18,4 +35,59 @@
       padding-right: 10px;
     }
   }
+  blockquote {
+    margin-left: 0px;
+    border-left: solid 2px #F7CD1F;
+    p {
+      margin-left: 40px;
+    }
+  }
+  pre {
+    code {
+      padding: 1em;
+    }
+  }
+  
+  h1 {
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 40px;
+  }
+  
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 35px;
+    font-weight: normal;
+  }
+  
+  h3 {
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  h4 {
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  
+  h6 {
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+}
 }
