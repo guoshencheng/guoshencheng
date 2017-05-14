@@ -18,6 +18,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
@@ -32,6 +36,10 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.md$/,
+        loaders: ['raw-loader']
       }
     ]
   },

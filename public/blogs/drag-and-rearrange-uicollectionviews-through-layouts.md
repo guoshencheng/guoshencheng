@@ -1,13 +1,14 @@
 <a style='color:#5f5ecb;font-size:40px;text-align:center
 '>通过layout实现可拖拽自动排序的UICollectionView</a>
 <div style='text-align:center;color:#b4b4b4'>2015年3月18日</div>
-#####Translate from [http://blog.karmadust.com/drag-and-rearrange-uicollectionviews-through-layouts/](http://blog.karmadust.com/drag-and-rearrange-uicollectionviews-through-layouts/)</br>
+
+#### Translate from [http://blog.karmadust.com/drag-and-rearrange-uicollectionviews-through-layouts/](http://blog.karmadust.com/drag-and-rearrange-uicollectionviews-through-layouts/)</br>
 
 --------------------------------------------------------
 （[Github](https://github.com/mmick66/KDRearrangeableCollectionViewFlowLayout)上的代码 - 使用XCode6.3编译）</br>
 我们将会在UICollectionView上添加很多功能。使得CollectionViewCell具备能够被拖拽并重新在上面找到新的位置的功能。
 
-######为了实现这些需求，我们需要：
+##### 为了实现这些需求，我们需要：
 
 &emsp;&emsp;1.&nbsp;&nbsp;添加一些手势，在这个例子中，我们使用长按手势，这个手势能够很明显的辨别出用户想要拖拽哪个Cell</br>
 &emsp;&emsp;2.&nbsp;&nbsp;设置一个引用这个CollectionView的对象，用于处理手势的代理(UIGestureDelegate)和拖拽的动作(Dragging Action)</br>
@@ -15,7 +16,7 @@
 &emsp;&emsp;4.&nbsp;&nbsp;当我们拖拽经过另一个Cell的时候，我们应该先交换CollectionView的对应的两个数据源（如果你的CollectionView是数据驱动的，那这是非常重要的一点）并交换两个Cell的位置</br>
 &emsp;&emsp;5.&nbsp;&nbsp;当用户放掉Cell的时候，我们从canvas上面移除这个截图，并且显示出原来的那个Cell
 
-######设计
+###### 设计
 首先我们必须要做的决定是手势识别我们应该放在哪里。有很多的选择，这其实很随意，但是这次我们选择将这些放在UICollectionView的Layout类中。这使得为我们的代码耦合度更低，我们只需要将一个文件拖拽到工程中，简单的使用这个类的对象代替原本的CollectionView的Layout属性，就能够达到拖拽并重新排序的功能。
 
 ![image](http://46.101.33.206/wp-content/uploads/2015/03/d2.png)
@@ -128,7 +129,7 @@ func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Boo
     }
 ```
 
-######拖拽Cell
+###### 拖拽Cell
 现在，又出现了新的问题。`UILongPressGestureRecognizer`有3个状态是我们该注意的，分别是`Began`, `Changed` 和 `Ended`，首先，我们隐藏拖拽的Cell，并将截图的View添加到Canvas上
 
 ```swift
@@ -198,7 +199,7 @@ if gestureRecognizer.state == UIGestureRecognizerState.Ended {
     bundle = nil          
 }
 ```
-######页面移动
+###### 页面移动
 有些东西会消失，会随着页面移动。当我们拖拽到collectionView的边界的时候无论是横向还是竖向我们需要将页面滑动到下一页，我们需要定义一些“零界点”来触发翻页。
 
 ![](http://46.101.33.206/wp-content/uploads/2015/03/DragEdges.jpg)
