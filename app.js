@@ -1,9 +1,12 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+const env = process.env.NODE_ENV;
 
 var routes = require('./routes/index');
 
@@ -12,6 +15,19 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+if (env == 'development') {
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const webpack = require('webpack');
+  var config = require('./build/webpack.config');
+  const compiler = webpack(config);
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath,
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
