@@ -1,0 +1,42 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: helvetica-light;
+  font-weight: 200;
+  color: #373737;
+}
+
+.gsc-common-header {
+  position: relative;
+  height: 60px;
+  box-shadow: 1px 1px 5px #b3b3b3;
+  .header-line {
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 0px; bottom: 0px;
+    left: 20px;
+    right: 20px;
+    overflow: hiddren;
+    margin: auto 0;
+    .header-line-item {
+      height: 100%;
+      float: left;
+      font-size: 1.6rem;
+    }
+    .header-line-right {
+      float: right;
+      margin-right: 2rem;
+    }
+    .header-title {
+      font-weight: 400;
+      font-size: 1.6rem;
+    }
+    .header-line-item-current {
+      color: #b3b3b3;
+    }
+  }
+}
