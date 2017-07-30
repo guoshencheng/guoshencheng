@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('guoshencheng:server');
+var debug = require('debug')('g:server');
 var http = require('http');
 
 /**

@@ -1,13 +1,9 @@
 var express = require('express');
-var index = express.Router();
-var db = require('./db');
+var router = express.Router();
 
 /* GET home page. */
-index.get('/', function(req, res, next) {
-  var env = process.env.NODE_ENV || "develop";
-  res.render('home', { env });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
 
-module.exports = {
-  index, db
-}
+module.exports = router;
