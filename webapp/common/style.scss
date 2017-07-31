@@ -9,13 +9,36 @@ body {
   color: #373737;
 }
 
+/* latin */
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url('./images/IndieFlower.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+.indie-flow-text {
+  font-family: 'Indie Flower', cursive;
+}
+
 .gsc-common-header {
   position: relative;
-  height: 60px;
-  box-shadow: 1px 1px 5px #b3b3b3;
+  height: 50px;
+  // box-shadow: 1px 1px 5px #b3b3b3;
+  background-size: contain;
+  border-radius: 5px;
+  margin: 5px 10px;
+  color: white;
+  .header-icon {
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    background-image: url('./images/header-logo.svg')
+  }
   .header-line {
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     position: absolute;
     top: 0px; bottom: 0px;
     left: 20px;
@@ -36,7 +59,13 @@ body {
       font-size: 1.6rem;
     }
     .header-line-item-current {
-      color: #b3b3b3;
+      color: #373737;
     }
   }
+}
+
+.gsc-image-contain {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
