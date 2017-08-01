@@ -1,0 +1,18 @@
+[
+  {
+    "name"        : "guoshencheng",
+    "script"      : "./bin/www",
+    "watch"       : false,
+    "instances"   : "1",
+    "exec_mode"   : "cluster",
+    "env": {
+      "NODE_ENV": "production",
+      "PORT": "3031"
+    },
+    "out_file": "./logs/app.log",
+    "error_file": "./logs/app.log",
+    "merge_logs": true,
+    "log_date_format": "YYYY-MM-DD HH:mm Z"
+  }
+]
+
