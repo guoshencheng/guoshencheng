@@ -10,5 +10,10 @@
   <% include ./partials/header.ejs %>
   <div class="home-page-icon gsc-image-contain"></div>
 </body>
-<script src="/dist/homepage.js"></script>
+<% if ( env == "development" ) { %>
+  <script src="/dist/homepage.js"></script>
+<% } else { %>
+  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css"">
+  <script src="/dist/homepage.<%- hash %>.js"></script>
+<% } %>
 </html>

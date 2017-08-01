@@ -2,6 +2,7 @@ var webpack = require('webpack')
 var path = require('path')
 var fs = require('fs')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HashPlugin = require('./hash-plugin');
 var base = require('./webpack.config.js');
 
 var cssLoader = {
@@ -51,6 +52,10 @@ production.module.loaders = base.module.loaders.map((value) => {
 })
 
 production.plugins = [
+  new HashPlugin({
+    path: path.resolve(__dirname, '../'),
+    filename: "resource-hash.js"
+  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false
