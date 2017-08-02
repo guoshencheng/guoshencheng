@@ -1,0 +1,20 @@
+<% var currentPage = "homepage" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>guoshencheng's home page</title>
+  <% include ../partials/common-js.ejs %>
+</head>
+<body>
+  <% include ../partials/header.ejs %>
+  <div class="home-page-icon gsc-image-contain"></div>
+</body>
+<% if ( env == "development" ) { %>
+  <script src="/dist/homepage.js"></script>
+<% } else { %>
+  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css"">
+  <script src="/dist/homepage.<%- hash %>.js"></script>
+<% } %>
+</html>
+
