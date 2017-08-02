@@ -21,8 +21,8 @@ router.get('/flow', function(req, res, next) {
   res.render('flow', { title: 'Express', env: env, hash: resourceHash.hash });
 });
 
-router.get('/blogs', function(req, res, next) {
-  res.render('blog/index', { title: 'Express', env: env, hash: resourceHash.hash });
+router.get('/posts', function(req, res, next) {
+  res.render('posts/index', { title: 'Express', env: env, hash: resourceHash.hash });
 });
 
 module.exports = router;
