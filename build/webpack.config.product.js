@@ -26,7 +26,6 @@ production.entry = Object.keys(base.entry).reduce((pre, cur) => {
 production.output = {
   path: path.resolve(__dirname, '../public/dist'),
   filename: "[name].[hash].js",
-  publicPath: "https://img.maihaoche.com/node_fiat/"
 }
 
 production.module.loaders = base.module.loaders.map((value) => {
