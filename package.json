@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "build": "NODE_ENV=production webpack --progress --display-error-details --config ./build/webpack.config.product.js",
-    "deploy": "pm2 start pm2.json"
+    "deploy": "pm2 start pm2.json",
+    "install:submodules": "git submodule foreach 'echo $path `git pull origin master`'"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
