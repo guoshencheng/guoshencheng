@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('./db');
 
 const env = process.env.NODE_ENV;
 console.log(env)
@@ -13,6 +12,10 @@ console.log(env)
 var routes = require('./routes/index');
 
 var app = express();
+app.use((req, res, next) => {
+  req.custom = req.custom || {};
+  next();
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

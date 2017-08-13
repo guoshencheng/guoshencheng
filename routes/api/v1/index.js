@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var middlwares = require('../../../services/middlewares');
+var blog = middlwares.blog;
 var db = require('../../../db');
 
-router.get('/blogs', (req, res, next) => {
-  db.Blog.all().then(docs => {
-    res.json(docs);
-  }).catch(next);
-})
+router.get('/blogs', blog.all(true));
 
 module.exports = router;
