@@ -1,5 +1,5 @@
-var blog = require('./blog.js');
+var post = require('./post.js');
 
 module.exports = {
-  blog
+  post
 }

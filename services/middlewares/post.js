@@ -1,22 +1,22 @@
 var db = require('../../db')
 
 const all = (isEnd) => (req, res, next) => {
-  db.Blog.all().then(docs => {
+  db.Post.all().then(docs => {
     if (isEnd) {
       res.json(docs);
     } else {
-      req.custom.blogs = docs;
+      req.custom.posts = docs;
       next();
     }
   }).catch(next);
 }
 
 const createEmpty = (isEnd) => (req, res, next) => {
-  db.Blog.create().save().then(doc => {
+  db.Post.create().save().then(doc => {
     if (isEnd) {
       res.json(doc)
     } else {
-      req.custom.blog = doc;
+      req.custom.post = doc;
       next();
     }
   }).catch(next);
@@ -26,7 +26,7 @@ const update = (isEnd, key) => (req, res, next) => {
   const id = req.params[key];
   const body = req.body;
   const { markdown, html, title } = body;
-  db.Blog.findById(id).then(doc => {
+  db.Post.findById(id).then(doc => {
     if (doc) {
       doc.markdown = markdown;
       doc.html = html;

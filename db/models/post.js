@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Blog = sequelize.define("Blog", {
+  var Post = sequelize.define("Post", {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   }, {
-    tableName: 'gsc_blog',
+    tableName: 'gsc_post',
   });
-  return Blog;
+  return Post;
 };
