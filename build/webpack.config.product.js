@@ -7,7 +7,7 @@ var base = require('./webpack.config.js');
 
 var cssLoader = {
   loader: "css-loader",
-  options: { 
+  options: {
     minimize: true
   }
 }
@@ -72,4 +72,3 @@ production.plugins = [
 production.devtool = "";
 
 module.exports = production;
-

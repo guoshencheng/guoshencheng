@@ -1,5 +1,17 @@
 var db = require('../../db')
 
+const findById = (isEnd, key) => (req, res, next) => {
+  const id = req.params[key || 'id'];
+  db.Post.findById(id).then(doc => {
+    if (isEnd) {
+      res.json(doc);
+    } else {
+      req.custom.post = doc;
+      next()
+    }
+  }).catch(next);
+}
+
 const all = (isEnd) => (req, res, next) => {
   db.Post.all().then(docs => {
     if (isEnd) {
@@ -12,7 +24,7 @@ const all = (isEnd) => (req, res, next) => {
 }
 
 const createEmpty = (isEnd) => (req, res, next) => {
-  db.Post.create().save().then(doc => {
+  db.Post.create().then(doc => {
     if (isEnd) {
       res.json(doc)
     } else {
@@ -46,5 +58,5 @@ const update = (isEnd, key) => (req, res, next) => {
 }
 
 module.exports = {
-  all, createEmpty, update
+  all, createEmpty, update, findById
 }

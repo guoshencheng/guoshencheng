@@ -8,21 +8,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     short: {
       type: DataTypes.STRING(200),
-      allowNull: true,
       defaultValue: "",
     },
     title: {
       type: DataTypes.STRING(200),
-      allowNull: false,
       defaultValue: "",
     },
     markdown: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      defaultValue: "",
     },
     html: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      defaultValue: "",
+    },
+    status: {
+      type: DataTypes.INTEGER(8),
+      defaultValue: 0
     }
   }, {
     tableName: 'gsc_post',

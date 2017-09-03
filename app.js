@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 const env = process.env.NODE_ENV;
-console.log(env)
 
 var routes = require('./routes/index');
 

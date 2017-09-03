@@ -6,31 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>编写博客</title>
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <link href="//cdn.muicss.com/mui-0.9.21/css/mui.min.css" rel="stylesheet" type="text/css" />
-  <script src="//cdn.muicss.com/mui-0.9.21/js/mui.min.js"></script>
+  <script src="https://img.maihaoche.com/mhc_fe_app/react.js"></script>
+  <script src="https://img.maihaoche.com/mhc_fe_app/react-dom.js"></script>
 </head>
 <body>
-  <% include ../partials/header.ejs %>
-  <div class="container">
-    <div id="sidedrawer" class="mui-panel">
-      <button class="mui-btn mui-btn--primary">新建+</button>
-    </div>
-    <div id="content-wrapper" class="mui-panel">
-      <button class="mui-btn mui-btn--accent">发布</button>
-      <input class="short-textarea" type="text" placeholder="标题。。。" name="markdown" ></input>
-      <textarea class="short-textarea" placeholder="描述。。。" name="markdown" rows="8" cols="80"></textarea>
-      <textarea class="blog-textarea" placeholder="编写博客。。。" name="markdown" rows="8" cols="80"></textarea>
-    </div>
-  </div>
+  <div id="container"> </div>
 </body>
 <% if ( env == "development" ) { %>
-  <script src="/dist/manage.js"></script>
   <script src="/dist/common.js"></script>
+  <script src="/dist/manage.js"></script>
 <% } else { %>
-  <link rel="stylesheet" href="/dist/manage.<%- hash %>.css"">
-  <script src="/dist/manage.<%- hash %>.js"></script>
   <link rel="stylesheet" href="/dist/common.<%- hash %>.css"">
   <script src="/dist/common.<%- hash %>.js"></script>
+  <link rel="stylesheet" href="/dist/manage.<%- hash %>.css"">
+  <script src="/dist/manage.<%- hash %>.js"></script>
 <% } %>
 </html>

@@ -1,0 +1,23 @@
+@import "../../../define.scss";
+
+.post-container {
+  flex: 1;
+  .tool-bar {
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 30px;
+    .tool-bar-icon-container {
+      border-radius: 5px;
+      padding: 5px 10px 5px 30px;
+      background-color: $normal-text-color;
+      .post-container-icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .custom-input-item {
+    max-width: 600px;
+  }
+}
