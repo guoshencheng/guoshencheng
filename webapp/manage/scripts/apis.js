@@ -6,6 +6,12 @@ export const methods = {
 }
 
 const apis = {
+  savePost: {
+    path: (params) => {
+      return `/api/v1/posts/${params.id}`
+    },
+    method: methods.PUT
+  },
   creatEmpty: {
     path: '/api/v1/posts/empty',
     method: methods.POST

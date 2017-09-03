@@ -11,6 +11,16 @@ export default (state = defaultValue, action) => {
       return Object.assign({}, state, {
         post: action.data
       })
+    case constants.POST.UPDATE_VALUE:
+      return Object.assign({}, state, {
+        post: Object.assign({}, state.post, {
+          [action.key]: action.value
+        })
+      })
+    case constants.POST.FINISH_SAVE_POST:
+      return Object.assign({}, state, {
+        post: action.data
+      })
     default:
       return state;
   }

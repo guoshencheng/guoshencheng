@@ -23,7 +23,7 @@ class InputItem extends Component {
     return (
       <div className={["input-item-container", className].join(' ')}>
         <div className="input-item-title">{ title }</div>
-        <input { ...this.props } type="text" value={ value || this.state.value } onChange={ this.onChange.bind(this) } />
+        <input { ...this.props } className="" type="text" value={ !!value || value == "" ? value : this.state.value } onChange={ this.onChange.bind(this) } />
         <div className="input-item-extra"> { extra } </div>
       </div>
     )
