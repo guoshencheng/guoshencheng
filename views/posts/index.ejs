@@ -8,14 +8,23 @@
 </head>
 <body>
   <% include ../partials/header.ejs %>
-  <div>
-  
+  <div class="container">
+    <% for(var index in posts) { var post = posts[index] %>
+      <div class="post-item">
+        <div class="post-item-title"><%- post.title || "没有标题" %></div>
+        <div class="post-item-desc"><%- post.short || "没有描述" %></div>
+        <div class="post-item-bottom">
+          <div class="post-item-authname">Author:<%- author.name %></div>
+          <div class="post-item-email">Email:<%- author.email %></div>
+        </div>
+      </div>
+    <% } %>
   </div>
 </body>
 <% if ( env == "development" ) { %>
-  <script src="/dist/homepage.js"></script>
+  <script src="/dist/posts.js"></script>
 <% } else { %>
   <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css"">
-  <script src="/dist/homepage.<%- hash %>.js"></script>
+  <script src="/dist/posts.<%- hash %>.js"></script>
 <% } %>
 </html>

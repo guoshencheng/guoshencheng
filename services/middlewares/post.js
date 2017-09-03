@@ -1,5 +1,18 @@
 var db = require('../../db')
 
+const allOnline = (isEnd) => (req, res, next) => {
+  db.Post.findAll({ where: {
+    status: 1
+  }}).then(docs => {
+    if (isEnd) {
+      res.json(docs);
+    } else {
+      req.custom.posts = docs;
+      next();
+    }
+  }).catch(next);
+}
+
 const findById = (isEnd, key) => (req, res, next) => {
   const id = req.params[key || 'id'];
   db.Post.findById(id).then(doc => {
@@ -34,6 +47,28 @@ const createEmpty = (isEnd) => (req, res, next) => {
   }).catch(next);
 }
 
+const changeStatus = (isEnd, id, status) => (req, res, next) => {
+  id = req.params[id]
+  status = req.params[status];
+  db.Post.findById(id).then(doc => {
+    if (doc) {
+      doc.status = status;
+      return doc.save()
+    } else {
+      throw `update blog id: ${id} failed`;
+    }
+  }).catch(next).then(doc => {
+    if (doc) {
+      if (isEnd) {
+        res.json(doc);
+      } else {
+        req.blog = doc;
+        next();
+      }
+    }
+  })
+}
+
 const update = (isEnd, key) => (req, res, next) => {
   const id = req.params[key];
   const body = req.body;
@@ -62,5 +97,5 @@ const update = (isEnd, key) => (req, res, next) => {
 }
 
 module.exports = {
-  all, createEmpty, update, findById
+  all, createEmpty, update, findById, changeStatus, allOnline
 }

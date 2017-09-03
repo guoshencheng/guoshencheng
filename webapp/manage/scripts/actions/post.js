@@ -3,6 +3,15 @@ import request from '../request.js';
 import { all } from './posts';
 import { keys, methods } from '../apis';
 
+export const changeStatus = (id, status) => (dispatch, getState) => {
+  request(keys.changePostStatus, { id, status }).then(data => {
+    dispatch({
+      type: constants.POST.FINISH_CHANGE_STATUS,
+      data
+    })
+  })
+}
+
 export const selectPost = (id) => (dispatch, getState) => {
   request(keys.postById, { id }).then(data => {
     dispatch({

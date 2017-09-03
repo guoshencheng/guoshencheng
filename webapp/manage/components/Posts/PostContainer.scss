@@ -8,12 +8,22 @@
     justify-content: flex-end;
     padding: 0px 30px;
     .tool-bar-icon-container {
+      display: flex;
+      align-items: center;
       border-radius: 5px;
       padding: 5px 10px 5px 30px;
       background-color: $normal-text-color;
+      color: white;
       .post-container-icon {
         width: 30px;
         height: 30px;
+      }
+      .post-status {
+        margin-left: 10px;
+        background-color: #FF905E;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
       }
     }
   }

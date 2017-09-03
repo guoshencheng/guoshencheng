@@ -1,0 +1,39 @@
+@import "../define.scss";
+
+.container {
+  margin-top: 100px;
+  font-size: 2rem;
+  .post-item {
+    margin: auto;
+    padding: 20px;
+    max-width: 500px;
+    .post-item-title {
+      word-wrap: break-word;
+      height: auto;
+      font-size: 2rem;
+    }
+    .post-item-desc {
+      margin-top: 10px;
+      word-wrap: break-word;
+      color: $grey-text-color;
+      font-size: 1.5rem;
+    }
+    .post-item-bottom {
+      margin-top: 10px;
+      overflow: hidden;
+      .post-item-authname {
+        word-wrap: break-word;
+        float: left;
+        color: $deep-blue-color;
+        font-size: 1.2rem;
+      }
+      .post-item-email {
+        word-wrap: break-word;
+        margin-left: 20px;
+        float: left;
+        color: $fresh-red-color;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

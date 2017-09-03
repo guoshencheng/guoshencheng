@@ -29,7 +29,10 @@ module.exports = {
           type: Sequelize.DATE
         }
       }
-    )
+    ),
+    {
+      charset: 'utf8',
+    }
   },
   down: function (queryInterface, Sequelize) {
     queryInterface.dropTable('gsc_post')
