@@ -1,0 +1,35 @@
+<% var currentPage = "posts" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>guoshencheng's home page</title>
+  <link rel="stylesheet" href="/stylesheets/atom-one-dark.css">
+  <link rel="stylesheet" href="/stylesheets/github-markdown.css">
+  <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
+  <% include ../partials/common-js.ejs %>
+</head>
+<body>
+  <% include ../partials/header.ejs %>
+  <div class="container">
+    <div class="base-info">
+      <div class="post-item-title"><%- post.title || "没有标题" %></div>
+      <div class="post-item-desc"><%- post.short || "没有描述" %></div>
+    </div>
+    <div class="markdown-body">
+    <%- html %>
+    </div>
+    <div class="post-bottom-info">
+      <div class="post-item-authname">Author:<%- author.name %></div>
+      <a href="mailto:guoshencheng1@gmail.com" class="post-item-email">Email:<%- author.email %></a>
+    </div>
+  </div>
+</body>
+  <script>hljs.initHighlightingOnLoad();</script>
+<% if ( env == "development" ) { %>
+  <script src="/dist/post.js"></script>
+<% } else { %>
+  <link rel="stylesheet" href="/dist/post.<%- hash %>.css"">
+  <script src="/dist/post.<%- hash %>.js"></script>
+<% } %>
+</html>

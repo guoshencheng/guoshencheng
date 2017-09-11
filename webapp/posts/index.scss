@@ -3,13 +3,17 @@
 .container {
   margin-top: 100px;
   font-size: 2rem;
+  a {
+    text-decoration: none;
+  }
   .post-item {
     margin: auto;
     padding: 20px;
-    max-width: 500px;
+    max-width: 700px;
     .post-item-title {
       word-wrap: break-word;
       height: auto;
+      color: $normal-text-color;
       font-size: 2rem;
     }
     .post-item-desc {

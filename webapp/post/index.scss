@@ -1,0 +1,45 @@
+@import "../define.scss";
+
+.container {
+  margin: auto;
+  margin-top: 50px;
+  font-size: 2rem;
+  max-width: 90rem;
+  padding: 0 3rem;
+  pre {
+    background: #42566f;
+  }
+  .base-info {
+    padding: 20px 0;
+    max-width: 500px;
+    .post-item-title {
+      word-wrap: break-word;
+      height: auto;
+      color: $normal-text-color;
+      font-size: 2rem;
+    }
+    .post-item-desc {
+      margin-top: 10px;
+      word-wrap: break-word;
+      color: $grey-text-color;
+      font-size: 1.5rem;
+      font-style: italic;
+    }
+  }
+  .post-bottom-info {
+    margin: 5rem 0;
+    font-size: 1.5rem;
+    overflow: hidden;
+    font-weight: 200px;
+    color: rgba(255, 255, 255, 0.6);
+    .post-item-authname {
+      float: left;
+    }
+    .post-item-email {
+      margin-left: 2rem;
+      float: left;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
