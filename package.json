@@ -21,7 +21,7 @@
     "marked": "^0.3.6",
     "morgan": "~1.6.1",
     "mysql2": "^1.4.0",
-    "sequelize": "^4.4.3",
+    "sequelize": "^4.8.3",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
