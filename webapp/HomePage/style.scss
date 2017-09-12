@@ -10,3 +10,79 @@ body {
   height: 300px;
   background-image: url('./images/header-logo.svg')
 }
+
+#mashroom-container {
+  width: 328px;
+  height: 328px;
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  margin: auto;
+  .mashroom {
+    .mashroom-item-line {
+      overflow: hidden;
+      .mashroom-item {
+        margin: 0.5px;
+        float: left;
+        width: 40px;
+        height: 40px;
+        animation: rotateplane 10s infinite ease-in-out;
+        &.white {
+          background: rgba(255, 255, 255, 0.75);
+        }
+        &.blank {
+          animation: none;
+        }
+        &.block {
+          background-color: #dedede;
+        }
+        &.red {
+          background-color: #F06050;
+        }
+        &.deep-blue {
+          background-color: #415C71;
+        }
+        &.yellow {
+          background-color: #F7CD1F;
+        }
+        &.shadow-blue {
+          background-color: #00C7AB;
+        }
+        &.black {
+          background-color: #000000;
+        }
+        &.grey {
+          background-color: #415457;
+        }
+      }
+    }
+  }
+}
+
+@keyframes changeColor {
+ 0% {
+    background-color: white;
+ } 50% {
+    background-color: #333;
+ } 100% {
+    background-color: white;
+ }
+}
+
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  } 10% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+  } 60% {
+    transform: perspective(120px) rotateX(-360deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-360deg) rotateY(0deg);
+  } 100% {
+    transform: perspective(120px) rotateX(-360deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-360deg) rotateY(0deg);
+  }
+}

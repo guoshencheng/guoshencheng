@@ -5,10 +5,19 @@
   <meta charset="UTF-8">
   <title>guoshencheng's home page</title>
   <% include ./partials/common-js.ejs %>
+
+<% if ( env == "development" ) { %>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react.js" charset="utf-8"></script>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js" charset="utf-8"></script>
+<% } else { %>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react.min.js" charset="utf-8"></script>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.min.js" charset="utf-8"></script>
+<% } %>
 </head>
 <body>
   <% include ./partials/header.ejs %>
   <div class="home-page-icon gsc-image-contain"></div>
+  <div id="mashroom-container"></div>
 </body>
 <% if ( env == "development" ) { %>
   <script src="/dist/homepage.js"></script>
