@@ -4,6 +4,7 @@ var env = process.env.NODE_ENV;
 var api = require('./api');
 var middlwares = require('../services/middlewares');
 var marked = require('marked');
+var passport = require('passport');
 
 var author = {
   name: "Century Guo",
@@ -16,7 +17,12 @@ try {
   resourceHash = {}
 }
 
+router.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
 
+router.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

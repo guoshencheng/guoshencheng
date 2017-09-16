@@ -5,12 +5,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var config = require('config');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
 
 const env = process.env.NODE_ENV;
+
+var passport = require('./services/passport');
 
 var routes = require('./routes/index');
 
 var app = express();
+
+//register mongoose session
+mongoose.connect(`mongodb://${config.mongo.host}/${config.mongo.database}`,{
+  useMongoClient: true,
+});
+app.use(session({
+  secret: 'Und3f1n3d',
+  cookie: { maxAge: 30 * 60 * 1000 },
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
 app.use((req, res, next) => {
   req.custom = req.custom || {};
   next();
@@ -40,6 +59,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
 app.use('/', routes);
 
