@@ -1,33 +1,61 @@
-body {
-  background-color: #FDD10E;
+
+html {
+  background-color: #52a260;
 }
 
-.home-page-icon {
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;
-  margin: auto;
-  width: 300px;
-  height: 300px;
-  background-image: url('./images/header-logo.svg')
+.container {
+  padding: 40px 0px;
+  .container-title {
+    color: white;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  &.green {
+    background-color: #52a260;
+  }
+  &.red {
+    background-color: #F86B4F;
+  }
+}
+
+.operations {
+  margin-top: 50px;
+  text-align: center;
+  a {
+    margin: 0 15px;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    &:hover {
+      color: rgba(253, 209, 14, 1);
+    }
+  }
 }
 
 #mashroom-container {
   width: 328px;
-  height: 328px;
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;
-  margin: auto;
+  margin: 0 auto;
+  position: relative;
   .mashroom {
     .mashroom-item-line {
       overflow: hidden;
       .mashroom-item {
+        border-radius: 5px;
         margin: 0.5px;
         float: left;
         width: 40px;
         height: 40px;
         animation: rotateplane 10s infinite ease-in-out;
         &.white {
-          background: rgba(255, 255, 255, 0.75);
+          // background-color: #FDD10E;
+          background: rgba(253, 209, 14, 0.6);
+        }
+        &.deep {
+          background: rgba(253, 209, 14, 0.7);
+        }
+        &.shadow {
+          background: rgba(253, 209, 14, 0.6);
         }
         &.blank {
           animation: none;

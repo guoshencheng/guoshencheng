@@ -12,17 +12,28 @@
 <% } else { %>
   <script src="https://cdn.bootcss.com/react/15.6.1/react.min.js" charset="utf-8"></script>
   <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css">
 <% } %>
 </head>
 <body>
-  <% include ./partials/header.ejs %>
-  <div class="home-page-icon gsc-image-contain"></div>
-  <div id="mashroom-container"></div>
+  <div class="container green">
+    <div class="game-text container-title">
+      Century's World
+    </div>
+    <div id="mashroom-container">
+      <% include ./partials/mashroom.ejs %>
+    </div>
+    <div class="operations game-text">
+      <a href="/posts">Posts</a>
+      <a href="https://github.com/guoshencheng">Github</a>
+    </div>
+  </div>
 </body>
+<script type="text/javascript">
+</script>
 <% if ( env == "development" ) { %>
   <script src="/dist/homepage.js"></script>
 <% } else { %>
-  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css"">
   <script src="/dist/homepage.<%- hash %>.js"></script>
 <% } %>
 </html>

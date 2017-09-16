@@ -7,7 +7,6 @@ body {
   font-family: helvetica-light;
   font-weight: 200;
   color: #373737;
-  background-color: #FDD10E;
 }
 
 /* latin */
@@ -19,18 +18,29 @@ body {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
+/* latin */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P Regular'), local('PressStart2P-Regular'), url('./images/PressStart2P-Regular.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 .indie-flow-text {
   font-family: 'Indie Flower', cursive;
+}
+
+.game-text {
+  font-family: 'Press Start 2P', cursive;
 }
 
 .gsc-common-header {
   position: relative;
   height: 50px;
-  // box-shadow: 1px 1px 5px #b3b3b3;
+  box-shadow: 1px 1px 5px #b3b3b3;
   background-size: contain;
-  border-radius: 5px;
-  margin: 5px 10px;
-  color: white;
+  padding: 5px 10px;
   a {
     text-decoration: none;
     color: inherit;
