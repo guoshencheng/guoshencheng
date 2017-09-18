@@ -16,7 +16,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GitHubStrategy({
     clientID: config.oauth.github.CLIENT_ID,
     clientSecret: config.oauth.github.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: config.oauth.github.callbackURL,
   }, (accessToken, refreshToken, profile, done) => {
     profile = profile._json;
     db.OAuth.findOne({ where: { authId: profile.id } }).then(doc => {
