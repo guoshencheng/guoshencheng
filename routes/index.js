@@ -35,8 +35,13 @@ router.get('/mock', function(req, res, next) {
   res.render('mock', { title: 'Express', env: env, hash: resourceHash.hash });
 });
 
-router.get('/manage', function(req, res, next) {
-  res.render('manage/index', { env: env, hash: resourceHash.hash });
+router.get('/manage', middlwares.auth.checkAuth, function(req, res, next) {
+  const authUser = req.custom.addUser;
+  if (authUser && authUser.power >= 100) {
+    res.render('manage/index', { env: env, hash: resourceHash.hash });
+  } else {
+    next(new Error('你没有权限'))
+  }
 });
 
 router.get('/flow', function(req, res, next) {

@@ -22,6 +22,9 @@ passport.use(new GitHubStrategy({
     db.OAuth.findOne({ where: { authId: profile.id } }).then(doc => {
       return doc ? doc : db.OAuth.create({ authId: profile.id, authType: AUTH_TYPES.GITHUB, accessToken: accessToken })
     }).then(doc => {
+      const createUser = () => {
+        return db.User.create({ nickname: profile.login, email: profile.email, avatar: profile.avatar_url }).then(updateUser)
+      }
       const updateUser = (user) => {
         doc.userId = user.id;
         return doc.save().then(d => {
@@ -29,9 +32,15 @@ passport.use(new GitHubStrategy({
         })
       }
       if (doc.userId) {
-        return db.User.findById(doc.userId).then(updateUser)
+        return db.User.findById(doc.userId).then(user => {
+          if (user) {
+            return updateUser(user)
+          } else {
+            return createUser();
+          }
+        })
       } else {
-        return db.User.create({ nickname: profile.login, email: profile.email, avatar: profile.avatar_url }).then(updateUser)
+        return createUser();
       }
     }).then(user => {
       done(null, user);
