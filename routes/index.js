@@ -36,7 +36,7 @@ router.get('/mock', function(req, res, next) {
 });
 
 router.get('/manage', middlwares.auth.checkAuth, function(req, res, next) {
-  const authUser = req.custom.addUser;
+  const authUser = req.custom.authUser;
   if (authUser && authUser.power >= 100) {
     res.render('manage/index', { env: env, hash: resourceHash.hash });
   } else {
