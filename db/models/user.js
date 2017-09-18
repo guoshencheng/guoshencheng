@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    power: {
+      type: DataTypes.INTEGER(11),
+      defaultValue: 0,
+    },
     avatar: {
       type: DataTypes.STRING(200),
       defaultValue: "",
