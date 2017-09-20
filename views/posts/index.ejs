@@ -10,12 +10,12 @@
   <div class="container">
     <% for(var index in posts) { var post = posts[index] %>
       <div class="post-item">
-        <a class="post-item-title" href="/posts/<%- post.id %>" ><%- post.title || "没有标题" %></a>
+        <a class="post-item-title" href="/posts/<%- post.id %>" >  <%- post.title || "没有标题" %> </a>
+        <div class="post-item-base-info"> <%- post.created %> / <%- author.name %> </div>
         <div class="post-item-desc"><%- post.short || "没有描述" %></div>
-        <div class="post-item-bottom">
-          <div class="post-item-authname">Author:<%- author.name %></div>
-          <div class="post-item-email">Email:<%- author.email %></div>
-        </div>
+        <a href="/posts/<%- post.id %>" >
+          <div class="see-more"> > see more </div>
+        </a>
       </div>
     <% } %>
   </div>

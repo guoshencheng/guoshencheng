@@ -5,6 +5,7 @@ var api = require('./api');
 var middlwares = require('../services/middlewares');
 var marked = require('marked');
 var passport = require('passport');
+var moment = require('moment')
 
 var author = {
   name: "Century Guo",
@@ -49,7 +50,11 @@ router.get('/flow', function(req, res, next) {
 });
 
 router.get('/posts', middlwares.post.allOnline(false), function(req, res, next) {
-  const { posts = [] } = req.custom;
+  var { posts = [] } = req.custom;
+  posts = posts.map(post => post.toJSON()).map(post => Object.assign({}, post, {
+    created: moment(post.created_at).format('MMM.DD YYYY')
+  }))
+  console.log(posts);
   res.render('posts/index', { author, title: 'Express', env: env, hash: resourceHash.hash, posts });
 });
 

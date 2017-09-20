@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www --config ./nodemon.json",
     "build": "NODE_ENV=production webpack --progress --display-error-details --config ./build/webpack.config.product.js",
     "deploy": "pm2 start pm2.json",
     "install:submodules": "git submodule foreach 'echo $path `git pull origin master`'",
@@ -21,6 +21,7 @@
     "express": "~4.13.1",
     "express-session": "^1.15.5",
     "marked": "^0.3.6",
+    "moment": "^2.18.1",
     "mongoose": "^4.11.11",
     "morgan": "~1.6.1",
     "mysql2": "^1.4.0",
