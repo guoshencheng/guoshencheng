@@ -47,9 +47,10 @@ const createEmpty = (isEnd) => (req, res, next) => {
   }).catch(next);
 }
 
-const changeStatus = (isEnd, id, status) => (req, res, next) => {
-  id = req.params[id]
-  status = req.params[status];
+const changeStatus = (isEnd, idKey, statusKey) => (req, res, next) => {
+  id = req.params[idKey]
+  status = req.params[statusKey];
+  console.log(id, status);
   db.Post.findById(id).then(doc => {
     if (doc) {
       doc.status = status;
