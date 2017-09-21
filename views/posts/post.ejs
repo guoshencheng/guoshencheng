@@ -13,14 +13,13 @@
   <div class="container">
     <div class="base-info">
       <div class="post-item-title"><%- post.title || "没有标题" %></div>
-      <div class="post-item-desc"><%- post.short || "没有描述" %></div>
+      <div class="post-item-base-info"> <%- post.created %> / <%- author.name %> </div>
     </div>
     <div class="markdown-body">
     <%- html %>
     </div>
     <div class="post-bottom-info">
-      <div class="post-item-authname">Author:<%- author.name %></div>
-      <a href="mailto:guoshencheng1@gmail.com" class="post-item-email">Email:<%- author.email %></a>
+      <a href="mailto:<%- author.email %>" class="post-item-email">Mail to: <%- author.email %></a>
     </div>
   </div>
 </body>

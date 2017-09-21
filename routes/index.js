@@ -49,23 +49,23 @@ router.get('/flow', function(req, res, next) {
   res.render('flow', { title: 'Express', env: env, hash: resourceHash.hash });
 });
 
+router.get('/posts/:id', middlwares.post.findById(false, "id"), function(req, res, next) {
+  let { post = {} } = req.custom;
+  post = post.toJSON();
+  const { markdown = "" } = post;
+  const html = marked(markdown);
+  post.created = moment(post.created_at).format('MMM.DD YYYY');
+  // res.send(html);
+  // res.end();
+  res.render('posts/post', { author, title: 'Express', env: env, hash: resourceHash.hash, html, post });
+});
+
 router.get('/posts', middlwares.post.allOnline(false), function(req, res, next) {
   var { posts = [] } = req.custom;
   posts = posts.map(post => post.toJSON()).map(post => Object.assign({}, post, {
     created: moment(post.created_at).format('MMM.DD YYYY')
   }))
-  console.log(posts);
   res.render('posts/index', { author, title: 'Express', env: env, hash: resourceHash.hash, posts });
-});
-
-router.get('/posts/:id', middlwares.post.findById(false, "id"), function(req, res, next) {
-  const { post = {} } = req.custom;
-  const { markdown = "" } = post;
-  const html = marked(markdown);
-  console.log(html)
-  // res.send(html);
-  // res.end();
-  res.render('posts/post', { author, title: 'Express', env: env, hash: resourceHash.hash, html, post });
 });
 
 module.exports = router;

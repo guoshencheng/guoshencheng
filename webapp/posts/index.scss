@@ -1,18 +1,25 @@
 @import "../define.scss";
+@mixin text-size-adjust($value: none) {
+  -webkit-text-size-adjust: $value;
+  -moz-text-size-adjust: $value;
+  -ms-text-size-adjust: $value;
+}
+html {
+  @include text-size-adjust(200%);
+}
 
 .container {
-  margin-top: 100px;
+  margin-top: 50px;
   a {
     text-decoration: none;
   }
   .post-item {
-    font-size: 13px;
     margin: auto;
-    padding: 20px;
-    max-width: 58.6em;
+    padding: 2rem 4rem;
+    max-width: 90rem;
     .see-more {
-      margin-top: 2.2em;
-      font-size: 1.4em;
+      margin-top: 1.2rem;
+      font-size: 1.4rem;
       color: #bebebe;
     }
     .post-item-title {
@@ -20,17 +27,17 @@
       word-wrap: break-word;
       height: auto;
       color: $normal-text-color;
-      font-size: 2.25em;
+      font-size: 2.8rem;
     }
     .post-item-base-info {
-      padding: 1em 0;
-      font-size: 1.4em;
+      padding: 1.2rem 0;
+      font-size: 1.3rem;
       color: #afbd20;
     }
     .post-item-desc {
       word-wrap: break-word;
       color: $grey-text-color;
-      font-size: 1.4em;
+      font-size: 1.4rem;
     }
   }
 }
