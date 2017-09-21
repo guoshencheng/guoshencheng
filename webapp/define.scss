@@ -3,3 +3,10 @@ $light-text-color: #afafaf;
 $grey-text-color: #6e6e6e;
 $deep-blue-color: #3e5c6d;
 $fresh-red-color: #f17272;
+
+@mixin text-size-adjust($value: none) {
+  text-size-adjustL $value;
+  -webkit-text-size-adjust: $value;
+  -moz-text-size-adjust: $value;
+  -ms-text-size-adjust: $value;
+}

@@ -1,9 +1,4 @@
 @import "../define.scss";
-@mixin text-size-adjust($value: none) {
-  -webkit-text-size-adjust: $value;
-  -moz-text-size-adjust: $value;
-  -ms-text-size-adjust: $value;
-}
 html {
   @include text-size-adjust(200%);
 }
