@@ -11,7 +11,7 @@ const sequelize = new Sequelize(mysql.database, mysql.username, mysql.password, 
   pool: {
     max: 5,
     min: 0,
-    idle: 10000
+    idle: 28800
   },
   define: {
     charset: 'utf8',
