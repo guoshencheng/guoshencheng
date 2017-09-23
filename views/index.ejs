@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5">
   <title>guoshencheng's home page</title>
   <% include ./partials/common-js.ejs %>
 
@@ -16,18 +17,24 @@
 <% } %>
 </head>
 <body>
-  <div class="container green">
-    <div class="game-text container-title">
-      Century's World
-    </div>
-    <div id="mashroom-container">
-      <% include ./partials/mashroom.ejs %>
-    </div>
-    <div class="operations game-text">
-      <a href="/posts">Posts</a>
-      <a href="https://github.com/guoshencheng">Github</a>
-    </div>
-  </div>
+  <table >
+    <tbody>
+      <td>
+        <div class="container green">
+          <div class="game-text container-title">
+            Century's World
+          </div>
+          <div id="mashroom-container">
+            <% include ./partials/mashroom.ejs %>
+          </div>
+          <div class="operations game-text">
+            <a href="/posts">Posts</a>
+            <a href="https://github.com/guoshencheng">Github</a>
+          </div>
+        </div>
+      </td>
+    </tbody>
+  </table>
 </body>
 <script type="text/javascript">
 </script>

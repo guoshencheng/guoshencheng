@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     ownerId: {
       type: DataTypes.INTEGER(11),
+      field: 'owner_id'
     }
   }, {
     tableName: 'gsc_mock_project',
