@@ -1,7 +1,4 @@
 @import "../define.scss";
-html {
-  @include text-size-adjust(200%);
-}
 
 .container {
   margin-top: 50px;
