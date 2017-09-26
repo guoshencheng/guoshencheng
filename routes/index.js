@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var env = process.env.NODE_ENV;
+var env = process.env.NODE_ENV || "development";
 var api = require('./api');
 var mockServer = require('./mockServer/index')
 var middlwares = require('../services/middlewares');
@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/api', api);
-router.use('/mockServer', mockServer) 
+router.use('/mockServer', mockServer)
 
 router.get('/mock', function(req, res, next) {
   res.render('mock', { title: 'Express', env: env, hash: resourceHash.hash });

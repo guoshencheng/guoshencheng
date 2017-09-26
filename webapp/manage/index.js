@@ -6,7 +6,6 @@ import createHistory from 'history/createHashHistory';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 import reducers from './scripts/reducers';
 const history = createHistory();
 let middlewares = [ thunk, routerMiddleware(history) ];
