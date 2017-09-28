@@ -1,0 +1,24 @@
+@import "../../define.scss";
+
+#navigation {
+  background: white;
+  border-bottom: solid 1px $line-color;
+  width: 100%;
+  height: 60px;
+  font-size: 22px;
+  display: table;
+  padding: 0 30px;
+  box-sizing: border-box;
+  .table-row-group {
+    display: table-row-group;
+    vertical-align: middle;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .navigation-title {
+    font-weight: 300;
+    float: left;
+  }
+}

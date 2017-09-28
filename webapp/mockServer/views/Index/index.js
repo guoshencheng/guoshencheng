@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connectApp } from '../../lib/index';
+import MockProjects from '../../components/MockProjects/MockProjects'
 import './index.scss';
 
 class Index extends Component {
@@ -9,7 +10,7 @@ class Index extends Component {
   render() {
     return (
       <div className="index-page">
-
+        <MockProjects></MockProjects>
       </div>
     )
   }

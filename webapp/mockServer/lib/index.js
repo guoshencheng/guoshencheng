@@ -1,10 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 import createHistory from 'history/createHashHistory';
-import thunk from 'redux-thunk';
+import mumThunk from './thunk.js';
+import reduxThunk from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
 import { Route, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter, routerReducer } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { render } from 'react-dom';
@@ -51,6 +52,7 @@ export const CustomRouter = (history, routers) => (
 export * from './utils.js';
 export * from './request';
 export * from './constant.js';
+export { default as mumThunk } from './thunk.js';
 
 export const connectApp = (mapState) => (component) => {
   return connect(mapState, () => ({ actions: _actions }))(component);
@@ -79,7 +81,10 @@ export const createApp = (options) => {
   const history = options.history || createHistory();
   const hooks = options.hooks || {};
   const auto = options.auto || false;
+  const customThunk = options.customThunk;
   const prefix = options.prefix || "";
+
+  const thunk = !!customThunk ? mumThunk : reduxThunk;
 
   // init request apis use apis[key](data) to send request. example: apis.login({ username: 'century guo', password: 'bestsoftwareengine' })
   const { onRequestError, onHandleRequest } = hooks;
@@ -89,7 +94,7 @@ export const createApp = (options) => {
   let RouterComponent;
   let _routers;
   if (is.fn(routers)) {
-    const RouterComponent = routers(history);
+    RouterComponent = routers(history);
     if (!RouterComponent) {
       console.warn(`the router function should return a component`);
     }
@@ -102,13 +107,13 @@ export const createApp = (options) => {
     if (is.object(reducers)) {
       const tree = buildConstantsTree(reducers);
       constants = buildConstants(tree, prefix);
-      reducers = buildReducers(reducers, prefix);
+      reducers = buildReducers(reducers, prefix, {}, { router: routerReducer });
     }
   }
 
   let _reducers = {}
   // init middlewares, inject some props which can be use in actions (dispatch, state, { apis, constants, actions }) => { ... } to see: https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-  let middlewares = [ thunk.withExtraArgument({ _actions, _reducers, apis: _apis, constants, actions, routers: _routers }), routerMiddleware(history) ];
+  let middlewares = options.middlewares || [ thunk.withExtraArgument({ apis: _apis, constants, actions: _actions, routers: _routers }), routerMiddleware(history) ];
 
   // init store
   const store = createStore(reducers, composeWithDevTools(applyMiddleware(...middlewares)));
@@ -127,6 +132,7 @@ export const createApp = (options) => {
     pre[key] = bindActionCreators(value, dispatch);
     return pre;
   }, _actions);
+  _actions.reducerActions = _reducers;
 
   // return app object
   return {

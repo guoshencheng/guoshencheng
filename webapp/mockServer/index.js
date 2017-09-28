@@ -1,6 +1,10 @@
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createApp } from './lib/index';
+import { createApp, analysisRouteTree } from './lib/index';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+
+import Navigation from './components/Navigation/Navigation';
 
 //redux actions and reducers
 import reducers from './scripts/reducers';
@@ -21,6 +25,24 @@ const routers = {
   }
 }
 
-const app = createApp({ reducers, routers, actions, apis, auto: true, prefix: "@gsc-mock-server" });
+const buildRouter = (history) => {
+  const _routers = analysisRouteTree(routers);
+  const __routers = Object.keys(_routers).map(k => _routers[k]);
+  return (
+    <ConnectedRouter history={ history }>
+      <div className="app-container">
+        <Navigation></Navigation>
+        <Switch>
+        {
+          __routers.map(router => {
+            return <Route key={ router.path } { ...router }/>
+          })
+        }
+        </Switch>
+      </div>
+    </ConnectedRouter>
+  )
+}
 
+const app = createApp({ reducers, routers: buildRouter, actions, apis, auto: true, customThunk: true, prefix: "@gsc-mock-server" });
 app.start(document.querySelector('#root'));

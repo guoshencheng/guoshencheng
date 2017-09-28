@@ -1,0 +1,24 @@
+@import "../../define.scss";
+.mock-projects {
+  overflow: hidden;
+  padding: 20px 30px;
+  .mock-project-item {
+    cursor: pointer;
+    background-color: white;
+    padding: 20px;
+    margin: 10px 20px;
+    width: 200px;
+    float: left;
+    transition: all .2s ease-out ;
+    box-shadow: 1px 1px 1px #dedede;
+    &:hover {
+      box-shadow: 3px 3px 3px #dedede;
+    }
+    .item-title {
+      margin: 0px 0px 10px;
+    }
+    .item-desc {
+      margin: 5px 0px;
+    }
+  }
+}

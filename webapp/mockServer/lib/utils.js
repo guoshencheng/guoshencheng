@@ -65,10 +65,10 @@ export const buildReducer = (nodes, defaultState, prefix) => {
   }
 }
 
-export const buildReducers = (data, prefix, defaultState) => {
+export const buildReducers = (data, prefix, defaultState, extraReducers) => {
   prefix = prefix || "";
   if (data.reducers) {
-    return buildReducers(data.reducers, prefix, data.defaultState);
+    return buildReducers(data.reducers, prefix, data.defaultState, extraReducers);
   } else {
     const objectCount = Object.keys(data).filter(k => is.object(data[k])).length;
     const fnCount = Object.keys(data).filter(k => is.fn(data[k])).length
@@ -77,7 +77,7 @@ export const buildReducers = (data, prefix, defaultState) => {
         const current = data[key];
         pre[key] = buildReducers(current, buildPrefix(key, prefix))
         return pre;
-      }, {})
+      }, (extraReducers || {}))
       return combineReducers(reducers);
     } else if (fnCount == Object.keys(data).length) {
       return buildReducer(data, defaultState, prefix);

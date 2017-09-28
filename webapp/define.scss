@@ -3,6 +3,7 @@ $light-text-color: #afafaf;
 $grey-text-color: #6e6e6e;
 $deep-blue-color: #3e5c6d;
 $fresh-red-color: #f17272;
+$line-color: #efefef;
 
 @mixin text-size-adjust($value: none) {
   text-size-adjust: $value;
