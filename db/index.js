@@ -10,8 +10,7 @@ const sequelize = new Sequelize(mysql.database, mysql.username, mysql.password, 
   dialect: mysql.dialect,
   pool: {
     max: 5,
-    min: 0,
-    idle: 28800
+    min: 0
   },
   define: {
     charset: 'utf8',
