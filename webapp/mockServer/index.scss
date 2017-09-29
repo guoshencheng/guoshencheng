@@ -1,3 +1,5 @@
+@import "./define.scss";
+
 html {
   font-size: 20px;
 }
@@ -35,4 +37,51 @@ body {
 }
 .font16 {
   font-size: 16px;
+}
+
+.table-row-group {
+  display: table-row-group;
+  vertical-align: middle;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.gsc-form {
+  .gsc-form-label {
+    float: none;
+    display: inline-block;
+    padding: 5px 0;
+  }
+  .gsc-form-section {
+    padding: 5px 0;
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+    input {
+      box-sizing: border-box;
+      height: 100%;
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      float: left;
+      border: solid 1px $line-color;
+      background: none;
+      outline: none;
+      padding: 0px 10px;
+      border-radius: 5px;
+    }
+    .gsc-form-button {
+      cursor: pointer;
+      float: left;
+      height: 100%;
+      padding: 0 15px;
+      &.green {
+        color: white;
+        background-color: #6fb97c;
+        border-radius: 4px;
+      }
+    }
+  }
 }

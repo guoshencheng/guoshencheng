@@ -5,3 +5,11 @@ export const fetchList = () => ({ apis, actions }) => {
     console.log(err)
   })
 }
+
+export const create = (params) => ({ apis, actions }) => {
+  apis.createMockProject(params).then(data => {
+    actions.router.push('/mockServer');
+  }).catch(err => {
+    console.log(err)
+  })
+}

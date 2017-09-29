@@ -1,1 +1,15 @@
 @import "../../define.scss";
+
+.add-icon {
+  background-image: url('../../images/add-icon.svg');
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 0.2s ease-out;
+  &:hover {
+    transform: rotate(90deg);
+  }
+}

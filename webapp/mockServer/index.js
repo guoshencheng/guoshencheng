@@ -15,10 +15,15 @@ import apis from './scripts/apis.js';
 
 //router components
 import Index from './views/Index/index.js';
+import CreateProject from './views/CreateProject/CreateProject';
 
 import './index.scss';
 
 const routers = {
+  createProject: {
+    path:'/mockProject/create',
+    component: CreateProject
+  },
   home: {
     path: '/',
     component: Index,

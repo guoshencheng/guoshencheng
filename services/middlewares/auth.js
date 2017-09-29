@@ -1,6 +1,7 @@
 var db = require('../../db')
 
-const checkAuth = (req, res, next) => {
+const checkAuth = (redirect) => (req, res, next) => {
+  redirect = redirect || "/auth/github";
   const session = req.session
   const passport = session.passport || {};
   const user = passport.user;
@@ -10,11 +11,11 @@ const checkAuth = (req, res, next) => {
         req.custom.authUser = user;
         next();
       } else {
-        res.redirect('/auth/github');
+        res.redirect(redirect);
       }
     }).catch(next);
   } else {
-    res.redirect('/auth/github');
+    res.redirect(redirect);
   }
 }
 

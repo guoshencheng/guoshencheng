@@ -4,7 +4,7 @@ var middlwares = require('../../../services/middlewares/index')
 var Mock = require('mockjs');
 var v1 = require('./v1');
 
-router.use('/v1', middlwares.auth.checkAuth, v1);
+router.use('/v1', middlwares.auth.checkAuth('/mockServer/auth/github'), v1);
 
 router.use('/:projectId/*', middlwares.mockProject.findById('projectId'), middlwares.mockApi.findByPath('0', 'projectId', false), (req, res, next) => {
   const mockApi = req.custom.mockApi;
