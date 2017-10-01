@@ -13,3 +13,9 @@ export const create = (params) => ({ apis, actions }) => {
     console.log(err)
   })
 }
+
+export const detail = (id) => ({ apis, actions}) => {
+  apis.getMockProject({ id }).then(data => {
+    actions.reducerActions.mockProject.FINISH_FETCH_DETAIL({ data });
+  })
+}

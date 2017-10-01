@@ -16,6 +16,7 @@ import apis from './scripts/apis.js';
 //router components
 import Index from './views/Index/index.js';
 import CreateProject from './views/CreateProject/CreateProject';
+import Project from './views/Project/Project';
 
 import './index.scss';
 
@@ -23,6 +24,10 @@ const routers = {
   createProject: {
     path:'/mockProject/create',
     component: CreateProject
+  },
+  projectDetail: {
+    path: '/mockProject/:id',
+    component: Project
   },
   home: {
     path: '/',

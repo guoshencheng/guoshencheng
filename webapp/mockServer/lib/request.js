@@ -27,8 +27,8 @@ const buildRequestParams = (method, url, data, options) => {
 const buildUrl = (host, apis, key, data) => {
   if (is.fn(key)) {
     return key(data)
-  } else if (is.fn(apis[key])) {
-    return apis[key](data)
+  } else if (is.fn(apis[key].path)) {
+    return apis[key].path(data)
   } else {
     return `${host}${ apis[key] ? apis[key].path : key}`
   }

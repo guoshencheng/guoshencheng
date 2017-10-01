@@ -1,6 +1,7 @@
 var webpack = require('webpack')
 var path = require('path')
 var fs = require('fs')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const entry = fs.readdirSync(path.resolve(__dirname, '../webapp')).filter((child) => {
   return fs.lstatSync(path.resolve(__dirname, '../webapp/' + child)).isDirectory();
@@ -32,10 +33,7 @@ module.exports = {
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-        }
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -64,7 +62,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('development'),
         isBrowse: true
       },
-    }),
+    })
   ],
   devtool: 'source-map'
 }

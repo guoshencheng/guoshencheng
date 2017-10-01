@@ -23,7 +23,7 @@ mongoose.connect(`mongodb://${config.mongo.host}/${config.mongo.database}`,{
 });
 app.use(session({
   secret: 'Und3f1n3d',
-  cookie: { maxAge: 30 * 60 * 1000 },
+  cookie: { maxAge: 30 *  60 * 60 * 1000 },
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })

@@ -16,6 +16,17 @@ body {
   font-size: 20px;
 }
 
+.white-bg {
+  background-color: white;
+}
+
+.gsc {
+  .ant-table {
+    padding: 20px 30px;
+    background-color: white;
+  }
+}
+
 .online-text {
   white-space: nowrap;
   overflow: hidden;

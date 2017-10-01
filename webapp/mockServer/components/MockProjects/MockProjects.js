@@ -12,6 +12,11 @@ class MockProjects extends React.Component {
     actions.mockProject.fetchList();
   }
 
+  onClickProjectItem(project) {
+    const { actions } = this.props;
+    actions.router.push(`/mockProject/${project.id}`);
+  }
+
   render() {
     const { mockProject = {} } = this.props;
     const { list = [] } = mockProject
@@ -20,7 +25,7 @@ class MockProjects extends React.Component {
         {
         list.map(project => {
           return (
-            <div className="mock-project-item" key={ project.id }>
+            <div className="mock-project-item" key={ project.id } onClick={ this.onClickProjectItem.bind(this, project) } >
               <div className="item-title strong-text font18">{ project.projectName }</div>
               <div className="item-desc online-text font16"> 项目描述: { project.projectDescribe }</div>
               <div className="item-desc font16"> 项目路径: { project.basePath }</div>

@@ -59,7 +59,7 @@ production.plugins = [
     compress: {
       warnings: false
     }
-  }),
+  })
   new ExtractTextPlugin('[name].[hash].css'),
   new webpack.DefinePlugin({
     'process.env': {
