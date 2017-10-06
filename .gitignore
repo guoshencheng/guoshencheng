@@ -3,4 +3,3 @@ node_modules
 public/bower_components
 *.swp
 .idea
-public/dist
