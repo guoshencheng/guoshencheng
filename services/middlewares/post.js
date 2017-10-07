@@ -26,7 +26,7 @@ const findById = (isEnd, key) => (req, res, next) => {
 }
 
 const all = (isEnd) => (req, res, next) => {
-  db.Post.all().then(docs => {
+  db.Post.all({ order: '"updatedAt" DESC' }).then(docs => {
     if (isEnd) {
       res.json(docs);
     } else {
