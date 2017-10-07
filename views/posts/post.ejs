@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="/stylesheets/github-markdown.css">
   <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
   <% include ../partials/common-js.ejs %>
+  <% if ( env != "development" ) { %>
+    <link rel="stylesheet" href="/dist/post.<%- hash %>.css">
+  <% } %>
 </head>
 <body>
   <div class="container">
@@ -28,7 +31,6 @@
 <% if ( env == "development" ) { %>
   <script src="/dist/post.js"></script>
 <% } else { %>
-  <link rel="stylesheet" href="/dist/post.<%- hash %>.css"">
   <script src="/dist/post.<%- hash %>.js"></script>
 <% } %>
 </html>
