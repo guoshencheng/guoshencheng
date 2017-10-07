@@ -1,9 +1,12 @@
 var db = require('../../db')
 
 const allOnline = (isEnd) => (req, res, next) => {
-  db.Post.findAll({ where: {
-    status: 1
-  }}).then(docs => {
+  db.Post.findAll({
+    where: {
+      status: 1
+    },
+    order: [["created_at", "DESC"]]
+  }).then(docs => {
     if (isEnd) {
       res.json(docs);
     } else {
@@ -26,7 +29,7 @@ const findById = (isEnd, key) => (req, res, next) => {
 }
 
 const all = (isEnd) => (req, res, next) => {
-  db.Post.all({ order: '"updatedAt" DESC' }).then(docs => {
+  db.Post.all({ order: [["updated_at", "DESC"]]}).then(docs => {
     if (isEnd) {
       res.json(docs);
     } else {
