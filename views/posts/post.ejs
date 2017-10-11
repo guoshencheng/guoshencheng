@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
-  <title>guoshencheng's home page</title>
+  <title><%- post.title || "博客" %></title>
   <link rel="stylesheet" href="/stylesheets/atom-one-dark.css">
   <link rel="stylesheet" href="/stylesheets/github-markdown.css">
   <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
@@ -33,4 +33,13 @@
 <% } else { %>
   <script src="/dist/post.<%- hash %>.js"></script>
 <% } %>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?517d8840b7d2d14e1a0cb2869b27cb9a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </html>
