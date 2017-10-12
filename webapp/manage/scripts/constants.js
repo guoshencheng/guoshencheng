@@ -23,4 +23,7 @@ export default buildConstants([{
 }, {
   key: "POST",
   values: ["SELECT", "UPDATE_VALUE", "FINISH_SAVE_POST", "FINISH_CHANGE_STATUS"]
+}, {
+  key: "TIPS",
+  values: ["ALL"]
 }], "@manage")

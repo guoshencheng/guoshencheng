@@ -6,6 +6,24 @@ export const methods = {
 }
 
 const apis = {
+  deleteTip: {
+    path: (params) => {
+      return `/api/v1/tips/${params.id}`;
+    },
+    method: methods.DELETE
+  },
+  updateTip: {
+    path: `/api/v1/tips`,
+    method: methods.PUT
+  },
+  createTip: {
+    path: `/api/v1/tips`,
+    method: methods.POST
+  },
+  allTips: {
+    path: `/api/v1/tips`,
+    method: methods.GET,
+  },
   changePostStatus: {
     path: (params) => {
       return `/api/v1/posts/${params.id}/status/${params.status}`;
