@@ -13,7 +13,6 @@ class CreateApi extends React.Component {
 
   componentDidMount() {
     const { editor } = this;
-    console.log(editor)
     window.require.config({ paths: { 'vs': 'javascripts/vs' }});
 	  window.require(['vs/editor/editor.main'], function() {
 		monaco.editor.create(editor, {
