@@ -21,7 +21,20 @@
     </div>
   </div>
 </body>
-<script src="/dist/tips.js" charset="utf-8"></script>
+<% if ( env == "development" ) { %>
+  <script src="/dist/tips.js"></script>
+<% } else { %>
+  <script src="/dist/tips.<%- hash %>.js"></script>
+<% } %>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?517d8840b7d2d14e1a0cb2869b27cb9a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <script type="text/javascript">
   if (window.screen.width >= 700) {
     waterfall('.tips-container');
