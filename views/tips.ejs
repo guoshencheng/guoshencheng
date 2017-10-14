@@ -7,6 +7,9 @@
   <title>我的小Tips</title>
   <% include ./partials/common-js.ejs %>
   <script src="/javascripts/waterfall.min.js" charset="utf-8"></script>
+  <% if ( env != "development" ) { %>
+    <link rel="stylesheet" href="/dist/tips.<%- hash %>.css">
+  <% } %>
 </head>
 <body>
   <div class="container">
