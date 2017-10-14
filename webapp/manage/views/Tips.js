@@ -5,6 +5,7 @@ const { confirm } = Modal;
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as tipActions from '../scripts/actions/tips';
+const { TextArea } = Input;
 
 const buildColumns = (clicks) => {
   return [{
@@ -21,7 +22,7 @@ const buildColumns = (clicks) => {
     render: (record) => {
       return (
         <span>
-          <a href="javascript:void(0)" onClick={ () => clicks.onEdit && clicks.onEdit(record.id) } >修改</a>
+          <a href="javascript:void(0)" onClick={ () => clicks.onEdit && clicks.onEdit(record.id, record.tipText) } >修改</a>
           <span className="ant-divider" />
           <a href="javascript:void(0)" onClick={ () => clicks.onDelete && clicks.onDelete(record.id) } >删除</a>
         </span>
@@ -39,16 +40,42 @@ class Tips extends React.Component {
     actions.all();
   }
 
-  onCreate() {
-    if (this.tip) {
-      const { actions } = this.props;
-      actions.create(this.tip);
-    }
-  }
   onTypeTips(event) {
     const { target } = event;
     const { value } = target;
     this.tip = value;
+  }
+
+  onDelete(id) {
+    const { actions } = this.props;
+    actions.deleteTip(id);
+  }
+
+
+  onEdit(id, value) {
+    const { actions } = this.props;
+    let tip = value;
+    const onChange = (event) => {
+      const { target } = event;
+      const { value } = target;
+      tip = value;
+    }
+    console.log(id)
+    const title = id ? '更新tip' : "新建tip";
+    confirm({
+      title,
+      content: (
+        <TextArea className="tip-input" autosize={ false } rows={ 5 } defaultValue={ tip } onChange={ onChange } placeholder={ title } ></TextArea>
+      ),
+      onOk() {
+        if (id) {
+          actions.updateTip(id, tip)
+        } else {
+          actions.create(tip)
+        }
+      },
+      onCancel() {},
+    });
   }
 
   render() {
@@ -57,14 +84,12 @@ class Tips extends React.Component {
       <div className="tips-container">
         <div className="container">
           <Row>
-            <Col span={ 12 }>
-              <Input ref="tip-input" onChange={ this.onTypeTips.bind(this) } placeholder="添加Tips" />
-            </Col>
-            <Col offset={ 2 } span={ 4 }>
-              <Button onClick={ this.onCreate.bind(this) } type="primary">添加</Button>
-            </Col>
+            <Button onClick={ this.onEdit.bind(this, false, "") } type="primary">添加</Button>
           </Row>
-          <Table rowKey="id" className="tips-table" columns={buildColumns()} dataSource={tips} />
+          <Table rowKey="id" className="tips-table" columns={buildColumns({
+            onDelete: this.onDelete.bind(this),
+            onEdit: this.onEdit.bind(this)
+           })} dataSource={tips} />
         </div>
       </div>
     )

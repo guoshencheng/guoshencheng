@@ -1,0 +1,46 @@
+html body {
+  background: #52a260;
+}
+
+.container {
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  .tips-container {
+    margin: 8rem 3rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    .tips-cell {
+      box-sizing: border-box;
+      line-height: 1.6;
+      color: white;
+      margin: 0.5rem;
+      background: rgba(253,209,14, 0.6);
+      border-radius: 0.5rem;
+      width: 20rem;
+      position: relative;
+      .item {
+        box-sizing: border-box;
+        padding: 2rem;
+      }
+      &.deep {
+        background: rgba(253,209,14, 0.7);
+      }
+      &.shallow {
+        background: rgba(253,209,14, 0.5);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    .tips-container {
+      margin: 3rem auto;
+      width: 80%;
+      .tips-cell {
+        margin: 0.5rem auto;
+        width: 100%;
+      }
+    }
+  }
+}

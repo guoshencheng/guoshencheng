@@ -16,6 +16,12 @@ var passport = require('./services/passport');
 var routes = require('./routes/index');
 
 var app = express();
+var resourceHash;
+try {
+  resourceHash = require('./resource-hash.js');
+} catch (e) {
+  resourceHash = {}
+}
 
 //register mongoose session
 mongoose.connect(`mongodb://${config.mongo.host}/${config.mongo.database}`,{
@@ -30,7 +36,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  req.custom = req.custom || {};
+  req.custom = req.custom || { resourceHash, env: env || 'development' };
   next();
 })
 

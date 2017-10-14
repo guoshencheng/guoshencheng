@@ -13,7 +13,9 @@ const apis = {
     method: methods.DELETE
   },
   updateTip: {
-    path: `/api/v1/tips`,
+    path: (params) => {
+      return `/api/v1/tips/${params.id}`;
+    },
     method: methods.PUT
   },
   createTip: {

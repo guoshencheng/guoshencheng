@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>我的小Tips</title>
+  <% include ./partials/common-js.ejs %>
+  <script src="/javascripts/waterfall.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="tips-container">
+      <% for(var index in tips) { var tip = tips[index]; %>
+      <div class="tips-cell <%- index % 4 == 0 ? 'deep' : index % 3 == 1 ? 'normal' : 'shallow' %>">
+        <div class="item">
+          <%- tip.tipText %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+<script src="/dist/tips.js" charset="utf-8"></script>
+<script type="text/javascript">
+  if (window.screen.width >= 700) {
+    waterfall('.tips-container');
+  }
+  window.addEventListener('resize', function () {
+    waterfall('.tips-container');
+  });
+</script>
+</html>

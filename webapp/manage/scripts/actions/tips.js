@@ -22,3 +22,9 @@ export const deleteTip = (id) => (dispatch, getState) => {
     dispatch(all());
   })
 }
+
+export const updateTip = (id, tipText) => (dispatch, getState) => {
+  request(keys.updateTip, { id, tipText }).then(data => {
+    dispatch(all());
+  })
+}

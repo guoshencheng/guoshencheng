@@ -46,10 +46,17 @@ const update = (req, res, next) => {
       throw new Error(`id ${id} not found`);
     }
   }).then(doc => {
-    res.josn(doc.toJSON());
+    res.json(doc.toJSON());
+  }).catch(next);
+}
+
+const deleteById = (req, res, next) => {
+  const id = req.params.id;
+  db.Tip.destroy({ where: { id } }).then(doc => {
+    res.json(doc);
   }).catch(next);
 }
 
 module.exports = {
-  create, findAll, findById, update, search
+  create, findAll, findById, update, search, deleteById
 };

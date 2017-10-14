@@ -15,6 +15,7 @@ router.get('/tips', constrollers.v1.tip.findAll);
 router.get('/tips/search', constrollers.v1.tip.search);
 router.post('/tips', constrollers.v1.tip.create);
 router.get('/tips/:id', constrollers.v1.tip.findById);
+router.delete('/tips/:id', constrollers.v1.tip.deleteById);
 router.put('/tips/:id', constrollers.v1.tip.update);
 
 module.exports = router;

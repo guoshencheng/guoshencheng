@@ -7,6 +7,7 @@ var middlwares = require('../services/middlewares');
 var marked = require('marked');
 var passport = require('passport');
 var moment = require('moment')
+var controllers = require('../services/controllers');
 
 var author = {
   name: "Century Guo",
@@ -50,6 +51,8 @@ router.get('/manage', middlwares.auth.checkAuth(), function(req, res, next) {
 router.get('/flow', function(req, res, next) {
   res.render('flow', { title: 'Express', env: env, hash: resourceHash.hash });
 });
+
+router.get('/tips', controllers.tips.renderTips);
 
 router.get('/posts/:id', middlwares.post.findById(false, "id"), function(req, res, next) {
   let { post = {} } = req.custom;
