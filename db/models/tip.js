@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: "",
       field: 'tip_text'
     },
+    tipHtml: {
+      type: DataTypes.TEXT,
+      defaultValue: "",
+      field: 'tip_html'
+    }
   }, {
     tableName: 'gsc_tip',
   });
