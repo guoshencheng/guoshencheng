@@ -36,16 +36,21 @@ body {
 }
 
 .gsc-common-header {
-  position: relative;
-  height: 50px;
-  box-shadow: 1px 1px 5px #b3b3b3;
-  background-size: contain;
-  padding: 5px 20px;
+  background-color: white;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5rem;
+  padding: 0.5rem 2rem;
+  overflow: hidden;
+  box-sizing: border-box;
   a {
     text-decoration: none;
     color: inherit;
   }
   table {
+    float: left;
     height: 100%;
     td {
       overflow: hidden;
@@ -53,15 +58,19 @@ body {
   }
   .header-title {
     font-weight: 400;
-    font-size: 1.6rem;
-    margin-left: 10px;
+    font-size: 1.5rem;
+    margin-left: 1rem;
   }
   .header-logo {
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     background-image: url('./images/header-icon.png');
   }
-  .header-line-item {
+  .header-link {
+    font-size: 1.2rem;
+    height: 5rem;
+    float: right;
+    line-height: 5rem;
   }
 }
 
@@ -69,4 +78,11 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+@media screen and (max-width: 480px) {
+  .gsc-common-header  {
+    .header-title {
+      display: none;
+    }
+  }
 }
