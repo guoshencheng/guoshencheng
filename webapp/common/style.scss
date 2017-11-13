@@ -79,7 +79,29 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-@media screen and (max-width: 480px) {
+
+.gsc-common-footer {
+  font-size: 1.2rem;
+  background-color: white;
+  padding: 1.5rem 1.5rem;
+  overflow: hidden;
+  .owner {
+    float: left;
+  }
+  .spit {
+    margin: 0 15px;
+    float: left;
+  }
+  .recordcode {
+    float: left;
+    a {
+      text-decoration: none;
+      color: #333333;
+    }
+  }
+}
+
+@media (max-width: 500px) {
   .gsc-common-header  {
     .header-title {
       display: none;
