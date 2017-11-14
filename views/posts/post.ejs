@@ -4,10 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
-  <meta name="keywords" content="guoshencheng,century,guo,javascript">
+  <meta name="keywords" content="guoshencheng,century,guo,javascript,贰年人">
   <meta name="author" content="guoshencheng">
   <meta name="description" content="<%- post.short %>">
-  <title><%- post.title || "博客" %></title>
+  <meta property="og:site_name" content="guoshencheng's Blog - 贰年人博客">
+  <title><%- post.title || "guoshencheng's Blog - 贰年人博客" %></title>
+  <meta name="HandheldFriendly" content="true">
+  <meta name="author" content="guoshencheng">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<%- post.title %>">
+  <meta property="og:description" content="<%- post.short %>">
+  <meta property="og:url" content="https://www.guoshencheng.com/posts">
+
   <link rel="stylesheet" href="/stylesheets/github-markdown.css">
   <link rel="stylesheet" href="/stylesheets/atom-one-dark.css">
   <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
