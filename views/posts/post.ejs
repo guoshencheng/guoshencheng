@@ -16,13 +16,13 @@
   <meta property="og:description" content="<%- post.short %>">
   <meta property="og:url" content="https://www.guoshencheng.com/posts">
 
-  <link rel="stylesheet" href="/stylesheets/github-markdown.css">
-  <link rel="stylesheet" href="/stylesheets/atom-one-dark.css">
-  <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
   <% include ../partials/common-js.ejs %>
   <% if ( env != "development" ) { %>
     <link rel="stylesheet" href="/dist/post.<%- hash %>.css">
   <% } %>
+  <link rel="stylesheet" href="/stylesheets/github-markdown.css">
+  <link rel="stylesheet" href="/stylesheets/atom-one-dark.css">
+  <script src="/javascripts/highlight.pack.js" charset="utf-8"></script>
 </head>
 <body>
   <% include ../partials/header.ejs %>
