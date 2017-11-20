@@ -6,7 +6,7 @@ var post = middlwares.post;
 
 router.get('/posts/tags', controllers.v1.postTag.all);
 router.get('/posts/tags/:id', controllers.v1.postTag.findById);
-router.get('/posts/tags/:id/posts', controllers.v1.postTag.all);
+router.get('/posts/tags/:id/posts', controllers.v1.post.findByTag);
 
 router.put('/posts/:id', post.update(true, "id"));
 router.put('/posts/:id/status/:status', post.changeStatus(true, "id", "status"));
