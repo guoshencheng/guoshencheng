@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS `gsc_post_tag` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` VARCHAR(200) NOT NULL COMMENT '标签的名称',
+  `description` VARCHAR(400) DEFAULT '' COMMENT '标签的描述',
+  `created_at` DATETIME COMMENT '创建时间',
+  `updated_at` DATETIME COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

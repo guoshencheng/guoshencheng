@@ -4,8 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.5">
-
   <title>guoshencheng's home page - 贰年人</title>
+<% include ./partials/common-js.ejs %>
+<% if ( env == "development" ) { %>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react.js" charset="utf-8"></script>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js" charset="utf-8"></script>
+<% } else { %>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react.min.js" charset="utf-8"></script>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css">
+<% } %>
   <meta name="keywords" content="guoshencheng,century,guo,javascript,node,posts,tips,github,贰年人">
   <meta name="HandheldFriendly" content="true">
   <meta name="author" content="guoshencheng">
@@ -15,16 +23,6 @@
   <meta property="og:description" content="guoshencheng's home page - 贰年人">
   <meta property="og:url" content="https://www.guoshencheng.com">
   <meta name="description" content="guoshencheng's home page - 贰年人">
-  <% include ./partials/common-js.ejs %>
-
-<% if ( env == "development" ) { %>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react.js" charset="utf-8"></script>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js" charset="utf-8"></script>
-<% } else { %>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react.min.js" charset="utf-8"></script>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.min.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="/dist/homepage.<%- hash %>.css">
-<% } %>
 </head>
 <body>
   <table >
