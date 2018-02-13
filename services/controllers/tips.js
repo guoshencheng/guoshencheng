@@ -1,15 +1,18 @@
 
 var db = require('../../db/index');
 
-const renderTips = (req, res, next) => {
-  db.Tip.findAll().then(docs => {
+const renderTips = async (req, res, next) => {
+  try {
+    const docs = await db.Tip.findAll();
     res.render('tips', {
       title: 'Express',
       env: req.custom.env,
       tips: docs.map(doc => doc.toJSON()),
       hash: req.custom.resourceHash.hash
     });
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
 module.exports = {

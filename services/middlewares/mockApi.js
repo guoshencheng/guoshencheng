@@ -2,34 +2,26 @@ var db = require('../../db')
 var pathToRegExp = require('path-to-regexp');
 var apiMethods = require('../../constant/apiMethods');
 
-var findByPath = (pathKey, projectIdKey, isEnd) => (req, res, next) => {
-  const id = req.params[projectIdKey];
+var findByPath = (pathKey, projectIdKey) => async (req, res, next) => {
+  const id = req.params.projectId;
   const apiPath = req.params[pathKey]
-  db.MockApi.findAll({ where: {
-    projectId: id
-  }}).then(docs => {
+  try {
+    const mockApis = await db.MockApi.findAll({ where: {
+      projectId: id
+    }})
     if (docs) {
-      const api = docs.reduce((pre, doc) => {
-        if (pathToRegExp(doc.apiPath).test(`/${apiPath}`) && apiMethods[doc.apiMethod] == req.method) {
-          return doc;
-        } else {
-          return pre;
-        }
-      }, undefined)
+      const api = mockApis.filter(mockApi => pathToRegExp(mockApi.apiPath).test(`/${apiPath}`) && apiMethods[mockApi.apiMethod] == req.method)[0]
       if (api) {
-        if (isEnd) {
-          res.json(api)
-        } else {
-          req.custom.mockApi = api;
-          next()
-        }
+        res.json(api)
       } else {
         next(new error(`mock server api path ${apipath} method ${req.method} in project id ${id} not find`))
       }
     } else {
       next(new error(`mock server api path ${apipath} method ${req.method} in project id ${id} not find`))
     }
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
 

@@ -2,29 +2,27 @@ var db = require('../../../db/index');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-const findByTag = (req, res, next) => {
+const findByTag = async (req, res, next) => {
   const id = req.params.id;
-  db.PostTag.findById(id).then(doc => {
-    if (doc) {
-      return db.PostTagMap.findAll({ where: { postTagId: id } }).then(docs => ({ postTag: doc, postIds: docs.map(d => d.postId) }))
-    } else {
-      throw new Error(`there is no tag id ${id}`)
-    }
-  }).then(obj => {
-    const { postIds, postTag } = obj;
-    return db.Post.findAll({
+  try {
+    var postTag = await db.PostTag.findById(id);
+    var postTagMaps = await db.PostTagMap.findAll({ where: { postTagId: id } });
+    var postIds = postTagMaps.map(postTagMap => postTagMap.postId);
+    var posts  = await db.Post.findAll({
       where: {
         id: {
           [Op.in]: [postIds]
         }
       },
       attributes: ['id', 'short', 'title', 'status']
-    }).then(docs => ({ postTag, posts: docs.map(doc => doc.toJSON()) })).catch(err => {
-      throw err;
     })
-  }).then(result => {
+    const result = {
+      postTag, posts: posts.map(post => post.toJSON())
+    }
     res.json(result);
-  }).catch(next);
+  } catch (e) {
+    next(e);
+  }
 }
 
 module.exports = {

@@ -4,62 +4,81 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 var marked = require('marked');
 
-const create = (req, res, next) => {
+const create = async (req, res, next) => {
   const tip = req.body;
   tip.tipHtml = marked(tip.tipText)
-  db.Tip.create(tip).then(doc => {
+  try {
+    const doc = await db.Tip.create(tip);
     res.json(doc.toJSON());
-  }).catch(next)
+  } catch (e) {
+    next(e)
+  }
 }
 
-const findById = (req, res, next) => {
+const findById =  async (req, res, next) => {
   const id = req.params.id
-  db.Tip.findById(id).then(doc => {
+  try {
+    const doc = await db.Tip.findById(id);
     if (doc) {
       res.json(doc.toJSON())
     } else {
       throw new Error(`id ${id} not find`)
     }
-  }).catch(next)
+  } catch (e) {
+    next(e)
+  }
 }
 
-const findAll = (req, res, next) => {
-  db.Tip.findAll().then(docs => {
+const findAll = async (req, res, next) => {
+  try {
+    const docs = await db.Tip.findAll();
     res.json(docs.map(doc => doc.toJSON()));
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
-const search = (req, res, next) => {
+const search = async (req, res, next) => {
   const s = req.query.search
-  db.Tip.findAll({ where: {
-    tipText: {
-      [Op.like]: `%${s}%`
-    }
-  }}).then(docs => {
+  try {
+    const docs = await db.Tip.findAll({
+      where: {
+        tipText: {
+          [Op.like]: `%${s}%`
+        }
+      }
+    })
     res.json(docs.map(doc => doc.toJSON()));
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
-const update = (req, res, next) => {
+const update = async (req, res, next) => {
   const id = req.params.id;
   const body = Object.assign({}, req.body);
   body.tipHtml = marked(body.tipText)
-  db.Tip.findById(id).then(doc => {
+  try {
+    var doc = await db.Tip.findById(id);
+    doc = await doc.update(body, { fields: ['tipText', 'tipHtml'] })
     if (doc) {
-      return doc.update(body, { fields: ['tipText', 'tipHtml']});
+      res.json(doc.toJSON());
     } else {
       throw new Error(`id ${id} not found`);
     }
-  }).then(doc => {
-    res.json(doc.toJSON());
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
-const deleteById = (req, res, next) => {
+const deleteById = async (req, res, next) => {
   const id = req.params.id;
-  db.Tip.destroy({ where: { id } }).then(doc => {
+  try {
+    const doc = await db.Tip.destroy({ where: { id } })
     res.json(doc);
-  }).catch(next);
+  } catch (e) {
+    next(e)
+  }
 }
 
 module.exports = {

@@ -1,20 +1,18 @@
 var db = require('../../../db/index');
 
-const create = (req, res, next) => {
+const create = async (req, res, next) => {
   const projectId = req.params.projectId;
   const authUser = req.custom.authUser;
   let body = Object.assign({}, req.body);
   delete body.id;
-  db.MockProject.findById(projectId).then(project => {
-    if (project && project.ownerId == authUser.id) {
+  const project = db.MockProject.findById(projectId);
+  if (project && project.ownerId == authUser.id) {
       const args = Object.assign({}, body, { projectId: project.id });
-      return db.MockApi.create(args);
-    } else {
-      throw new Error("project not exist or it is not your project");
-    }
-  }).then(doc => {
-    res.json(doc.toJSON());
-  }).catch(next)
+      const doc = db.MockApi.create(args);
+      res.json(doc.toJSON());
+  } else {
+    next(new Error(`project not exist or it is not your project`))
+  }
 }
 
 const findById = (req, res, next) => {

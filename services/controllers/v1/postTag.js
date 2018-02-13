@@ -1,19 +1,22 @@
 var db = require('../../../db/index');
 
-const all = (req, res, next) => {
-  db.PostTag.findAll().then(docs => {
-    res.json(docs.map(doc => doc.toJSON()));
-  }).catch(next);
+const all = async (req, res, next) => {
+  try {
+    const postTags = await db.PostTag.findAll();
+    res.json(postTags.map(doc => doc.toJSON()));
+  } catch (e) {
+    next(e);
+  }
 }
-const findById = (req, res, next) => {
+
+const findById = async (req, res, next) => {
   const id = req.params.id;
-  db.PostTag.findById(id).then(doc => {
-    if (doc) {
-      res.json(doc.toJSON());
-    } else {
-      next(new Error(`post tag id ${id} is not found`))
-    }
-  }).catch(next);
+  try {
+    const postTag = await db.PostTag.findById(id);
+    res.json(postTag.toJSON());
+  } catch (e) {
+    next(e)
+  }
 }
 
 module.exports = {
