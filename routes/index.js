@@ -4,15 +4,9 @@ var env = process.env.NODE_ENV || "development";
 var api = require('./api');
 var mockServer = require('./mockServer/index')
 var middlwares = require('../services/middlewares');
-var marked = require('marked');
 var passport = require('passport');
-var moment = require('moment')
 var controllers = require('../services/controllers');
 
-var author = {
-  name: "Century Guo",
-  email: "guoshencheng1@gmail.com"
-}
 var resourceHash;
 try {
   resourceHash = require('../resource-hash.js');

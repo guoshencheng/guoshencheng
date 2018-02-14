@@ -1,7 +1,14 @@
 var db = require('../../db/index');
 var moment = require('moment');
 var Sequelize = require('sequelize');
+var marked = require('marked');
 const Op = Sequelize.Op;
+
+
+var author = {
+  name: "Century Guo",
+  email: "guoshencheng1@gmail.com"
+}
 
 const renderPostPageById = async (req, res, next) => {
   const id = req.params.id;
@@ -25,6 +32,7 @@ const renderPostPageById = async (req, res, next) => {
 }
 
 const renderPostList = async (req, res, next) => {
+  const { resourceHash, env } = req.custom;
   try {
     var posts = await db.Post.findAll({
       where: {
