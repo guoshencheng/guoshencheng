@@ -9,7 +9,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || 'development';
 
 var passport = require('./services/passport');
 
