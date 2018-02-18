@@ -7,9 +7,9 @@ const checkAuth = (redirect) => async (req, res, next) => {
   const user = passport.user;
   if (user && user.userId) {
     try {
-      const user = await db.User.findById(user.userId);
-      if (user) {
-        req.custom.authUser = user;
+      const _user = await db.User.findById(user.userId);
+      if (_user) {
+        req.custom.authUser = _user;
         next();
       } else {
         res.redirect(redirect);
