@@ -1,3 +1,5 @@
+> 该项目已经被废弃，最新的主页使用gatsby来构建静态页面，最新的源码地址请[戳此处](https://github.com/guoshencheng/CenturyGuo)
+
 ## guoshencheng's personal site source code
 
 [online location](https://www.guoshencheng.com)
